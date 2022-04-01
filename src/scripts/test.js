@@ -1,21 +1,32 @@
 document.addEventListener('DOMContentLoaded', function(e){
   let main = document.getElementById('main');
   main.innerHTML = '<p>Hello World </p>';
-});
 
-let games = [];
-d3.csv('./data/matchinfo.csv', function (res) {
-  games.push(res);
-  console.log(res);
-})
-console.log(games.length);
+  
+  async function getData(){
+    let games = [];
+    await d3.csv('./data/matchinfo.csv', function (data) {
+      games.push(data);
+    })
 
-// debugger;
-let bjerg = [];
-games.forEach(singlegame => {
-  // debugger;
-  if (singlegame['blueMiddle'] === 'Bjergsen' || singlegame['redMiddle'] === 'Bjergsen') {
-    bjerg.push(singlegame)
+    let bjerg = [];
+    games.forEach(singlegame => {
+      if (singlegame['blueMiddle'] === 'Bjergsen' || singlegame['redMiddle'] === 'Bjergsen') {
+        bjerg.push(singlegame)
+      }
+    })
+    console.log(bjerg);
+
+    // console.log(games)
+    // return games;
   }
-})
-// console.log(bjerg);
+
+
+  let games = getData();
+  // console.log(games)
+}
+);
+
+
+
+
