@@ -3,11 +3,19 @@ document.addEventListener('DOMContentLoaded', function(e){
   main.innerHTML = '<p>Hello World </p>';
 });
 
-let game = [];
+let games = [];
 d3.csv('./data/matchinfo.csv', function (res) {
-  // console.log(res);
-  // res.json();
-  // debugger;
-  game.push(res);
-  console.log(game);
+  games.push(res);
+  console.log(res);
 })
+console.log(games.length);
+
+// debugger;
+let bjerg = [];
+games.forEach(singlegame => {
+  // debugger;
+  if (singlegame['blueMiddle'] === 'Bjergsen' || singlegame['redMiddle'] === 'Bjergsen') {
+    bjerg.push(singlegame)
+  }
+})
+// console.log(bjerg);
