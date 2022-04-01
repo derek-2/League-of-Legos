@@ -5,24 +5,20 @@ document.addEventListener('DOMContentLoaded', function(e){
   
   async function getData(){
     let games = [];
-    await d3.csv('./data/matchinfo.csv', function (data) {
-      games.push(data);
-    })
-
-    let bjerg = [];
-    games.forEach(singlegame => {
-      if (singlegame['blueMiddle'] === 'Bjergsen' || singlegame['redMiddle'] === 'Bjergsen') {
-        bjerg.push(singlegame)
+    await d3.csv('./data/LeagueofLegends.csv', function (data) {
+      if ((data.blueTeamTag === 'TSM' || data.redTeamTag === 'TSM') && (data.blueTeamTag === 'C9' || data.redTeamTag === 'C9')){
+        games.push(data.golddiff);
       }
-    })
-    console.log(bjerg);
+    });
+    console.log(games[0]);
+    console.log(games.length);
 
-    // console.log(games)
-    // return games;
+
   }
 
 
   let games = getData();
+  return games;
   // console.log(games)
 }
 );
