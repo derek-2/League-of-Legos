@@ -37,8 +37,8 @@ document.addEventListener('DOMContentLoaded', function(e){
   }
 
   console.log('in test.js');
-  // let games = getData();
-  // return games;
+  let games = getData();
+  return games;
 
 }
 );
