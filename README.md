@@ -15,8 +15,7 @@ League of Legends is a team-based 5vs5 game and the NALCS is the North American 
 
 - Generate a gold chart for any specific match
 
-![WIREFRAME](https://user-images.githubusercontent.com/59910096/161291926-51006f85-d581-4d2c-99d5-ede5cdfd6820.png)
-
+![Homepage](https://user-images.githubusercontent.com/59910096/161406151-9381d526-e684-41c6-9352-c78f642be1b2.png)
 
 ## Technologies, Libraries, APIs
 
