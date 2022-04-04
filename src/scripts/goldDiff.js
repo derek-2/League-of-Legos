@@ -60,7 +60,9 @@ class GoldDiff {
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x))
       .select(".domain")
-      .remove();
+      .remove()
+      .append("text")
+      .text("Minute");
 
     g.append("g")
       .call(d3.axisLeft(y))
@@ -70,7 +72,7 @@ class GoldDiff {
       .attr("y", 6)
       .attr("dy", "0.71em")
       .attr("text-anchor", "end")
-      .text("gold diff");
+      .text("Gold Difference");
 
     g.append("path")
       .datum(goldDiffy[gameNum])
