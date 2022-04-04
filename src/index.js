@@ -4,7 +4,6 @@ import Data from "./scripts/data"; // import Data class from data.js
 window.addEventListener('DOMContentLoaded', (event) => {
   console.log('hello');
   const searchButton = document.getElementById('search-btn');
-  debugger;
   searchButton.addEventListener('click', () => {
     let team1 = document.getElementById('team1').value;
     let team2 = document.getElementById('team2').value;

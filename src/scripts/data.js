@@ -63,7 +63,7 @@ class Data {
       }
     });
 
-    debugger;
+    // debugger;
     let canvas = document.getElementById('main');
     // debugger;
 
@@ -95,8 +95,9 @@ class Data {
       gameInfo.append(redPlayers);
 
       for(let j=0; j< playerNames[i].length; j++){
-        if (j >= 5){
+        if (j < 5){
           let player = document.createElement('p');
+          debugger;
           player.innerHTML = `${playerNames[i][j]} ${playerGolds[i][j]}`;
           bluePlayers.append(player);
         }
@@ -109,7 +110,7 @@ class Data {
 
     }
   
-    
+
   } // end of async function
 
 
