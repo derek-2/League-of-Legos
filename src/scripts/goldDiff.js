@@ -11,7 +11,7 @@ class GoldDiff {
     let goldDiffy = [];
 
     await d3.csv('../../data/LeagueofLegends.csv', function (d) {
-      if (d.blueTeamTag === team1 || d.redTeamTag === team1) {
+      if ((d.blueTeamTag === team1 || d.redTeamTag === team1) && (d.blueTeamTag === team2 || d.redTeamTag === team2)) {
 
         let goldDiff = JSON.parse(d.golddiff).map((ele, idx) => {
           return {

@@ -20,7 +20,7 @@ class Data {
     let bans = []; // blue bans, red bans
 
     await d3.csv('../../data/LeagueofLegends.csv', function(d){
-      if (d.blueTeamTag === team1 && d.redTeamTag === team2){
+      if ((d.blueTeamTag === team1 || d.redTeamTag === team1) && (d.blueTeamTag === team2 || d.redTeamTag === team2)){
         // debugger;
         games.push(d);
         matchInfo.push([d.Year, d.Season, d.Type]);
@@ -98,12 +98,12 @@ class Data {
         if (j < 5){
           let player = document.createElement('p');
           debugger;
-          player.innerHTML = `${playerNames[i][j]} ${playerGolds[i][j]}`;
+          player.innerHTML = `${playerNames[i][j]} (${championNames[i][j]}) ${playerGolds[i][j]}`;
           bluePlayers.append(player);
         }
         else {
           let player = document.createElement('p');
-          player.innerHTML = `${playerNames[i][j]} ${playerGolds[i][j]}`;
+          player.innerHTML = `${playerNames[i][j]} (${championNames[i][j]}) ${playerGolds[i][j]}`;
           redPlayers.append(player);
         }
       }
