@@ -1,3 +1,3 @@
-import GoldGraph from "./scripts/gold_graph";
+import Data from "./scripts/data"; // import Data class from data.js
 
-let test = new GoldGraph("TSM", "C9");
+let test = new Data("TSM", "C9");
