@@ -31,9 +31,9 @@ document.addEventListener('DOMContentLoaded', function(e){
       .enter()
       .append('rect')
       .attr('width', function (d) { return scaleWidth(d) })
-      .attr('height', function (d) { return 50 })
+      .attr('height', function (d) { return 50; })
       .attr('fill', 'black')
-      .attr('y', function (d, i) { return i * 51 })
+      .attr('y', function (d, i) { return i * 51; })
   }
 
   console.log('in test.js');

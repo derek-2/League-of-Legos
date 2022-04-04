@@ -1,3 +1,4 @@
+import GoldDiff from "./goldDiff";
 class Data {
   constructor(team1, team2){
     console.log('hello');
@@ -13,7 +14,7 @@ class Data {
     let matchInfo = [];
 
     // stats of the match
-    let goldDiffy = [];
+    // let goldDiffy = [];
     let playerGolds = [];
     let playerNames = []; // blue players, red players
     let championNames = []; // blue champions, red champions
@@ -26,16 +27,14 @@ class Data {
         matchInfo.push([d.Year, d.Season, d.Type]);
 
 
-        // get gold diff data --> changed to fit the d3 line graph notation
-        // debugger;
-        let goldDiff = JSON.parse(d.golddiff).map( (ele, idx) => {
-          return {
-            minute: idx,
-            goldDiff: ele
-          };
-        });
-        // debugger;
-        goldDiffy.push(goldDiff);
+        // // get gold diff data --> changed to fit the d3 line graph notation
+        // let goldDiff = JSON.parse(d.golddiff).map( (ele, idx) => {
+        //   return {
+        //     minute: idx,
+        //     goldDiff: ele
+        //   };
+        // });
+        // goldDiffy.push(goldDiff);
        
         
         // get player golds of both teams at the end of the game
@@ -78,47 +77,55 @@ class Data {
     let canvas = document.getElementById('main');
     // debugger;
 
-    for(let i = 0; i < playerNames.length; i++){
-      // debugger;
+    for( let i = 0; i < playerNames.length; i++){
       let gameInfo = document.createElement('div');
-
-      // create gold chart (have to iterate from 0 to goldDiffy[i].length and create a line graph) 
-      // -------
+      gameInfo.setAttribute('id',`game-${i}`);
+      gameInfo.setAttribute('class','game-info');
+      canvas.append(gameInfo);
       // debugger;
-      for(let x = 0; x < goldDiffy[i].length; x++){
-        let goldGraph = document.createElement('div');
-  
+      new GoldDiff(i,team1, team2);
 
-        
-      }
-
-      // ----------
-
-
-
-      gameInfo.setAttribute('id',`game ${i+1}`);
-      for(let j = 0; j < playerNames[i].length; j++ ){
-        // gameinfo is going to be a div element containinng each match the two teams played vs each other
-        // create average stats for both teams
-        // create scoreboard with player name, champ name, stats, bans
-        let player = document.createElement('p');
-        player.innerHTML = `${playerNames[i][j]} ${playerGolds[i][j]}`;
-        gameInfo.append(player);
-
-  
-        
-  
-  
-  
-        canvas.append(gameInfo);
-        // debugger;
-      }
-      let linebreak = document.createElement('br');
-      canvas.append(linebreak);
     }
 
 
-    console.log(goldDiffy.length, playerNames.length, championNames.length, bans.length);
+
+    // for(let i = 0; i < playerNames.length; i++){ //iterate through each game
+    //   // debugger;
+    //   let gameInfo = document.createElement('div');
+    //   gameInfo.setAttribute('id',`game-${i}`);
+
+    //   // create gold chart (have to iterate from 0 to goldDiffy[i].length and create a line graph) 
+    //   // -------
+    //   // debugger;
+    //   // debugger;
+    //   new GoldDiff(i,team1, team2);
+    //   // ----------
+
+
+
+
+    //   for(let j = 0; j < playerNames[i].length; j++ ){
+    //     // gameinfo is going to be a div element containinng each match the two teams played vs each other
+    //     // create average stats for both teams
+    //     // create scoreboard with player name, champ name, stats, bans
+    //     let player = document.createElement('p');
+    //     player.innerHTML = `${playerNames[i][j]} ${playerGolds[i][j]}`;
+    //     gameInfo.append(player);
+
+  
+        
+  
+  
+  
+    //     canvas.append(gameInfo);
+    //     // debugger;
+    //   }
+    //   let linebreak = document.createElement('br');
+    //   canvas.append(linebreak);
+    // }
+
+
+    // console.log(goldDiffy.length, playerNames.length, championNames.length, bans.length);
 
     // bans[0].forEach(champ => console.log(champ, champ.length));
     // console.log(bans[0][0]);
