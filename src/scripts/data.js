@@ -8,8 +8,7 @@ class Data {
   }
 
   async generateData(team1, team2){
-    // console.log('me generate gold graph!!!');
-
+    let games=[]; // can delete this after project done
     // general info on the match
     let matchInfo = [];
 
@@ -21,9 +20,9 @@ class Data {
     let bans = []; // blue bans, red bans
 
     await d3.csv('../../data/LeagueofLegends.csv', function(d){
-      if ((d.blueTeamTag === team1 || d.redTeamTag === team1) && 
-      (d.blueTeamTag === team2 || d.redTeamTag === team2)) {
+      if (d.blueTeamTag === team1 && d.redTeamTag === team2){
         // debugger;
+        games.push(d);
         matchInfo.push([d.Year, d.Season, d.Type]);
 
         // get player golds of both teams at the end of the game
@@ -63,6 +62,8 @@ class Data {
 
       }
     });
+
+    debugger;
     let canvas = document.getElementById('main');
     // debugger;
 
@@ -74,57 +75,41 @@ class Data {
       // debugger;
       new GoldDiff(i,team1, team2);
 
-      debugger;
+      // debugger;
+
+      let bluePlayers = document.createElement('div');
+      let blueteamLabel = document.createElement('h2');
+      blueteamLabel.innerText = `${team1}`;
+      bluePlayers.setAttribute('id', 'blueTeam');
+      bluePlayers.setAttribute('class', 'players-container');
+      bluePlayers.append(blueteamLabel);
+
+      let redPlayers = document.createElement('div');
+      let redteamLabel = document.createElement('h2');
+      redteamLabel.innerText = `${team2}`;
+      redPlayers.setAttribute('id', 'redTeam');
+      redPlayers.setAttribute('class', 'players-container');
+      redPlayers.append(redteamLabel);
+
+      gameInfo.append(bluePlayers);
+      gameInfo.append(redPlayers);
 
       for(let j=0; j< playerNames[i].length; j++){
-        let player = document.createElement('div');
-        player.innerHTML = `${playerNames[i][j]} ${playerGolds[i][j]}`;
-        gameInfo.append(player);
+        if (j >= 5){
+          let player = document.createElement('p');
+          player.innerHTML = `${playerNames[i][j]} ${playerGolds[i][j]}`;
+          bluePlayers.append(player);
+        }
+        else {
+          let player = document.createElement('p');
+          player.innerHTML = `${playerNames[i][j]} ${playerGolds[i][j]}`;
+          redPlayers.append(player);
+        }
       }
 
     }
-
-
-
-    // for(let i = 0; i < playerNames.length; i++){ //iterate through each game
-    //   // debugger;
-    //   let gameInfo = document.createElement('div');
-    //   gameInfo.setAttribute('id',`game-${i}`);
-
-    //   // create gold chart (have to iterate from 0 to goldDiffy[i].length and create a line graph) 
-    //   // -------
-    //   // debugger;
-    //   // debugger;
-    //   new GoldDiff(i,team1, team2);
-    //   // ----------
-
-
-
-
-      
-
   
-        
-  
-  
-  
-    //     canvas.append(gameInfo);
-    //     // debugger;
-    //   }
-    //   let linebreak = document.createElement('br');
-    //   canvas.append(linebreak);
-    // }
-
-
-    // console.log(goldDiffy.length, playerNames.length, championNames.length, bans.length);
-
-    // bans[0].forEach(champ => console.log(champ, champ.length));
-    // console.log(bans[0][0]);
-    // console.log(playerNames);
-    // console.log(goldDiffy.length);
-
-
-
+    
   } // end of async function
 
 

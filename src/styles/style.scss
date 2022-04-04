@@ -1,0 +1,33 @@
+.game-info {
+  border: solid blue 2px;
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+}
+
+.players-container {
+  margin: 10px;
+  color: blue;
+
+  // margin: 5px;
+}
+
+#redTeam {
+  color: red;
+}
+
+h2 {
+  color: black;
+  font-weight: bold;
+}
+
+main {
+  padding: 10px;
+  font-family: 'Courier New',
+  Courier,
+  monospace;
+}
+
+h1 {
+  font-size: 50px;
+}
