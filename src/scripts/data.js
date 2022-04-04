@@ -1,4 +1,6 @@
 import GoldDiff from "./goldDiff";
+import GoldShare from "./goldShare";
+import MatchInfo from "./matchInfo";
 class Data {
   constructor(team1, team2){
     console.log('hello');
@@ -14,7 +16,7 @@ class Data {
     // stats of the match
     // let goldDiffy = [];
 
-    let matchInfo = [];
+    // let matchInfo = [];
     let blueWins = 0;
     let redWins = 0;
     let playerGolds = [];
@@ -27,10 +29,8 @@ class Data {
         // debugger;
         games.push(d);
 
-
-
-        matchInfo.push([d.Year, d.Season, d.Type]);
-        debugger;
+        // matchInfo.push([d.League, d.Year, d.Season, d.Type]);
+        // debugger;
         if (parseInt(d.bResult) === 1){
           blueWins+=1;
         }
@@ -78,7 +78,7 @@ class Data {
     });
     let headtohead = document.getElementById('overall-record');
     headtohead.innerHTML = `${team1} ${blueWins} - ${redWins} ${team2}`;
-    // debugger;
+    debugger;
     let canvas = document.getElementById('main');
     // debugger;
 
@@ -88,6 +88,7 @@ class Data {
       gameInfo.setAttribute('class','game-info');
       canvas.append(gameInfo);
       // debugger;
+      new MatchInfo(i, team1, team2)
       new GoldDiff(i,team1, team2);
 
       // debugger;
@@ -125,7 +126,7 @@ class Data {
 
     }
   
-
+    // debugger;
   } // end of async function
 
 
