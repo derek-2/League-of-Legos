@@ -10,20 +10,34 @@ class Data {
   async generateData(team1, team2){
     let games=[]; // can delete this after project done
     // general info on the match
-    let matchInfo = [];
-
+    
     // stats of the match
     // let goldDiffy = [];
+
+    let matchInfo = [];
+    let blueWins = 0;
+    let redWins = 0;
     let playerGolds = [];
     let playerNames = []; // blue players, red players
     let championNames = []; // blue champions, red champions
     let bans = []; // blue bans, red bans
 
     await d3.csv('../../data/LeagueofLegends.csv', function(d){
-      if ((d.blueTeamTag === team1 || d.redTeamTag === team1) && (d.blueTeamTag === team2 || d.redTeamTag === team2)){
+      if (d.blueTeamTag === team1 && d.redTeamTag === team2){
         // debugger;
         games.push(d);
+
+
+
         matchInfo.push([d.Year, d.Season, d.Type]);
+        debugger;
+        if (parseInt(d.bResult) === 1){
+          blueWins+=1;
+        }
+        else {
+          redWins+=1;
+        }
+
 
         // get player golds of both teams at the end of the game
         let idx = JSON.parse(d.goldblueTop).length-1; // gets the idx for last minute of the game
@@ -62,7 +76,8 @@ class Data {
 
       }
     });
-
+    let headtohead = document.getElementById('overall-record');
+    headtohead.innerHTML = `${team1} ${blueWins} - ${redWins} ${team2}`;
     // debugger;
     let canvas = document.getElementById('main');
     // debugger;
@@ -97,7 +112,7 @@ class Data {
       for(let j=0; j< playerNames[i].length; j++){
         if (j < 5){
           let player = document.createElement('p');
-          debugger;
+          // debugger;
           player.innerHTML = `${playerNames[i][j]} (${championNames[i][j]}) ${playerGolds[i][j]}`;
           bluePlayers.append(player);
         }
