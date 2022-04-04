@@ -26,17 +26,6 @@ class Data {
         // debugger;
         matchInfo.push([d.Year, d.Season, d.Type]);
 
-
-        // // get gold diff data --> changed to fit the d3 line graph notation
-        // let goldDiff = JSON.parse(d.golddiff).map( (ele, idx) => {
-        //   return {
-        //     minute: idx,
-        //     goldDiff: ele
-        //   };
-        // });
-        // goldDiffy.push(goldDiff);
-       
-        
         // get player golds of both teams at the end of the game
         let idx = JSON.parse(d.goldblueTop).length-1; // gets the idx for last minute of the game
 
@@ -85,6 +74,14 @@ class Data {
       // debugger;
       new GoldDiff(i,team1, team2);
 
+      debugger;
+
+      for(let j=0; j< playerNames[i].length; j++){
+        let player = document.createElement('div');
+        player.innerHTML = `${playerNames[i][j]} ${playerGolds[i][j]}`;
+        gameInfo.append(player);
+      }
+
     }
 
 
@@ -104,13 +101,7 @@ class Data {
 
 
 
-    //   for(let j = 0; j < playerNames[i].length; j++ ){
-    //     // gameinfo is going to be a div element containinng each match the two teams played vs each other
-    //     // create average stats for both teams
-    //     // create scoreboard with player name, champ name, stats, bans
-    //     let player = document.createElement('p');
-    //     player.innerHTML = `${playerNames[i][j]} ${playerGolds[i][j]}`;
-    //     gameInfo.append(player);
+      
 
   
         
