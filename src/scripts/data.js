@@ -22,12 +22,20 @@ class Data {
     await d3.csv('../../data/LeagueofLegends.csv', function(d){
       if ((d.blueTeamTag === team1 || d.redTeamTag === team1) && 
       (d.blueTeamTag === team2 || d.redTeamTag === team2)) {
-
+        // debugger;
         matchInfo.push([d.Year, d.Season, d.Type]);
 
 
-        // get gold diff data
-        goldDiffy.push(JSON.parse(d.golddiff));
+        // get gold diff data --> changed to fit the d3 line graph notation
+        // debugger;
+        let goldDiff = JSON.parse(d.golddiff).map( (ele, idx) => {
+          return {
+            minute: idx,
+            goldDiff: ele
+          };
+        });
+        // debugger;
+        goldDiffy.push(goldDiff);
        
         
         // get player golds of both teams at the end of the game
@@ -69,12 +77,22 @@ class Data {
     });
     let canvas = document.getElementById('main');
     // debugger;
+
     for(let i = 0; i < playerNames.length; i++){
+      // debugger;
       let gameInfo = document.createElement('div');
 
-      // create gold chart (have to iterate from 0 to goldDiffy[i].length and create a line graph)
-      let goldDiffChart = document.createElement('div');
-      // goldDiffChart.setAttribute()
+      // create gold chart (have to iterate from 0 to goldDiffy[i].length and create a line graph) 
+      // -------
+      // debugger;
+      for(let x = 0; x < goldDiffy[i].length; x++){
+        let goldGraph = document.createElement('div');
+  
+
+        
+      }
+
+      // ----------
 
 
 
@@ -103,7 +121,7 @@ class Data {
     console.log(goldDiffy.length, playerNames.length, championNames.length, bans.length);
 
     // bans[0].forEach(champ => console.log(champ, champ.length));
-    console.log(bans[0][0]);
+    // console.log(bans[0][0]);
     // console.log(playerNames);
     // console.log(goldDiffy.length);
 
