@@ -9,17 +9,17 @@ window.addEventListener('DOMContentLoaded', (event) => {
     let team1 = document.getElementById('team1').value.toUpperCase();
     let team2 = document.getElementById('team2').value.toUpperCase();
     
-    // function emptyChildren(parent) {
-    //   while (parent.firstChild) {
-    //     parent.removeChild(parent.firstChild);
-    //   }
-    // }
-    // let statsdiv = document.getElementById('stats');
+    function emptyChildren(parent) {
+      while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+      }
+    }
+    let statsdiv = document.getElementById('stats');
     if (!team1 || !team2){
       alert('enter valid teams!');
     }
     else {
-      // emptyChildren(statsdiv);
+      emptyChildren(statsdiv);
       // debugger;
       let request = new Data(team1, team2);
     }

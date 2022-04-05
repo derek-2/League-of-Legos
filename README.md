@@ -9,8 +9,6 @@ League of Legends is a team-based 5vs5 game and the NALCS is the North American 
 
 - Search for a specific team
 
-- Search for a specific player
-
 - Generate general information about the league
 
 - Generate a gold chart for any specific match
