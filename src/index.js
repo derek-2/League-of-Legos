@@ -1,7 +1,12 @@
 import Data from "./scripts/data"; // import Data class from data.js
 
-
 window.addEventListener('DOMContentLoaded', (event) => {
+  function emptyChildren(parent) {
+    while (parent.firstChild) {
+      parent.removeChild(parent.firstChild);
+    }
+  }
+  let statsdiv = document.getElementById('stats');
   console.log('hello');
   const searchButton = document.getElementById('search-btn');
   searchButton.addEventListener('click', () => {
@@ -9,12 +14,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
     let team1 = document.getElementById('team1').value.toUpperCase();
     let team2 = document.getElementById('team2').value.toUpperCase();
     
-    function emptyChildren(parent) {
-      while (parent.firstChild) {
-        parent.removeChild(parent.firstChild);
-      }
-    }
-    let statsdiv = document.getElementById('stats');
     if (!team1 || !team2){
       alert('enter valid teams!');
     }
@@ -29,6 +28,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
   const secondTeam = document.getElementById('team2');
   firstTeam.addEventListener('keypress', function (e){
     if (e.key === 'Enter'){
+      // debugger;
+      emptyChildren(statsdiv);
       let team1 = document.getElementById('team1').value.toUpperCase();
       let team2 = document.getElementById('team2').value.toUpperCase();
       let request = new Data(team1, team2);
@@ -36,6 +37,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
   });
   secondTeam.addEventListener('keypress', function (e){
     if (e.key === 'Enter'){
+      // debugger;
+      emptyChildren(statsdiv);
       let team1 = document.getElementById('team1').value.toUpperCase();
       let team2 = document.getElementById('team2').value.toUpperCase();
       let request = new Data(team1, team2);
@@ -43,6 +46,3 @@ window.addEventListener('DOMContentLoaded', (event) => {
   });
   
 });
-
-
-// let test = new Data("TSM", "SSW");
