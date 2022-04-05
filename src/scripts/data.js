@@ -103,7 +103,6 @@ class Data {
       let redteamLabel = document.createElement('h2');
       redteamLabel.innerText = `${team2}`;
       redPlayers.setAttribute('id', `redteam${i}`);
-      // redPlayers.setAttribute('class', `red`);
       redPlayers.setAttribute('class', 'players-container red');
       redPlayers.append(redteamLabel);
 
