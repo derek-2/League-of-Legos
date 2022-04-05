@@ -22,7 +22,7 @@ class Data {
     let playerGolds = [];
     let playerNames = []; // blue players, red players
     let championNames = []; // blue champions, red champions
-    let bans = []; // blue bans, red bans
+    let bans = [];
 
     await d3.csv('../../data/LeagueofLegends.csv', function(d){
       if (d.blueTeamTag === team1 && d.redTeamTag === team2){
@@ -66,12 +66,14 @@ class Data {
         championNames.push([d.blueTopChamp, d.blueJungleChamp, d.blueMiddleChamp, d.blueADCChamp, d.blueSupportChamp,d.redTopChamp, d.redJungleChamp, d.redMiddleChamp, d.redADCChamp, d.redSupportChamp]);
 
         // get bans of both teams, could have just used JSON.parse
-        let blueBans = d.blueBans.slice(1,d.blueBans.length-1).replaceAll("'","").split(",");
-        blueBans = blueBans.map(ban => ban.trim());
-        let redBans = d.redBans.slice(1,d.redBans.length-1).replaceAll("'","").split(",");
-        redBans = redBans.map(ban => ban.trim());
-
-        bans.push(blueBans.concat(redBans));
+        // debugger;
+        let currentblueBans = d.blueBans.slice(1,d.blueBans.length-1).replaceAll("'","").split(",");
+        currentblueBans = currentblueBans.map(ban => ban.trim());
+        let currentredBans = d.redBans.slice(1,d.redBans.length-1).replaceAll("'","").split(",");
+        currentredBans = currentredBans.map(ban => ban.trim());
+        // debugger;
+        bans.push(currentblueBans.concat(currentredBans));
+        
 
 
       }
@@ -109,6 +111,35 @@ class Data {
       gameInfo.append(bluePlayers);
       gameInfo.append(redPlayers);
 
+
+
+      let blueattach = document.getElementById(`blueteam${i}`);
+      let redattach = document.getElementById(`redteam${i}`);
+      let bluesBans = document.createElement('p');
+      let redsBans = document.createElement('p');
+      // debugger;
+      blueattach.append(bluesBans);
+      redattach.append(redsBans);
+
+
+      let mid = bans[i].length/2;
+      let allBluesBans = [];
+      let allRedsBans = [];
+      debugger;
+      for (let c = 0; c < mid; c++){
+        debugger;
+        allBluesBans.push(bans[i][c]);
+      }
+      for (let c = mid; c < mid*2; c++){
+        debugger;
+        allRedsBans.push(bans[i][c]);
+      }
+
+      bluesBans.innerHTML = allBluesBans.join(" ");
+      redsBans.innerHTML = allRedsBans.join(" ");
+      // debugger;
+
+
       let newMatchInfo = new MatchInfo(i, team1, team2);
       let newGoldDiff = new GoldDiff(i,team1, team2);
       let newGoldShare = new GoldShare(i, playerNames[i], playerGolds[i]);
@@ -127,6 +158,8 @@ class Data {
         }
       }
 
+
+      
     }
   
     // debugger;
