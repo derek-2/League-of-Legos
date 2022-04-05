@@ -28,6 +28,7 @@ class GoldDiff {
     let goldGraph = document.createElementNS('http://www.w3.org/2000/svg','svg');
     goldGraph.setAttribute('id', `gold-graph-${gameNum}`);
     let gameInfoContainer = document.getElementById(`game-${gameNum}`);
+    
     gameInfoContainer.append(goldGraph);
 
     // -------------------------------------------------------

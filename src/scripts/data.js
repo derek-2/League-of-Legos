@@ -78,18 +78,19 @@ class Data {
     });
     let headtohead = document.getElementById('overall-record');
     headtohead.innerHTML = `${team1} ${blueWins} - ${redWins} ${team2}`;
-    debugger;
-    let canvas = document.getElementById('main');
+    // debugger;
+    let statsdiv = document.getElementById('stats');
     // debugger;
 
     for( let i = 0; i < playerNames.length; i++){
       let gameInfo = document.createElement('div');
       gameInfo.setAttribute('id',`game-${i}`);
       gameInfo.setAttribute('class','game-info');
-      canvas.append(gameInfo);
+      statsdiv.append(gameInfo);
       // debugger;
-      new MatchInfo(i, team1, team2)
-      new GoldDiff(i,team1, team2);
+      // debugger;
+      let newMatchInfo = new MatchInfo(i, team1, team2)
+      let newGoldDiff = new GoldDiff(i,team1, team2);
 
       // debugger;
 
