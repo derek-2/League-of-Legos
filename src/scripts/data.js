@@ -88,28 +88,31 @@ class Data {
       gameInfo.setAttribute('class','game-info');
       statsdiv.append(gameInfo);
       // debugger;
-      // debugger;
-      let newMatchInfo = new MatchInfo(i, team1, team2)
-      let newGoldDiff = new GoldDiff(i,team1, team2);
 
+      
       // debugger;
 
       let bluePlayers = document.createElement('div');
       let blueteamLabel = document.createElement('h2');
       blueteamLabel.innerText = `${team1}`;
-      bluePlayers.setAttribute('id', 'blueTeam');
+      bluePlayers.setAttribute('id', `blueteam${i}`);
       bluePlayers.setAttribute('class', 'players-container');
       bluePlayers.append(blueteamLabel);
-
+      
       let redPlayers = document.createElement('div');
       let redteamLabel = document.createElement('h2');
       redteamLabel.innerText = `${team2}`;
-      redPlayers.setAttribute('id', 'redTeam');
-      redPlayers.setAttribute('class', 'players-container');
+      redPlayers.setAttribute('id', `redteam${i}`);
+      // redPlayers.setAttribute('class', `red`);
+      redPlayers.setAttribute('class', 'players-container red');
       redPlayers.append(redteamLabel);
 
       gameInfo.append(bluePlayers);
       gameInfo.append(redPlayers);
+
+      let newMatchInfo = new MatchInfo(i, team1, team2);
+      let newGoldDiff = new GoldDiff(i,team1, team2);
+      let newGoldShare = new GoldShare(i, playerNames[i], playerGolds[i]);
 
       for(let j=0; j< playerNames[i].length; j++){
         if (j < 5){
