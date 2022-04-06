@@ -145,17 +145,49 @@ class Data {
       let newGoldDiff = new GoldDiff(i,team1, team2);
       let newGoldShare = new GoldShare(i, playerNames[i], playerGolds[i]);
 
-      for(let j=0; j< playerNames[i].length; j++){
-        let player = document.createElement('p');
-        player.innerHTML = `${playerNames[i][j]} (${championNames[i][j]}) ${playerGolds[i][j]}`;
-        if (j < 5){
-          bluePlayers.append(player);
+      // for(let j=0; j< playerNames[i].length; j++){
+      //   let player = document.createElement('p');
+      //   player.innerHTML = `${playerNames[i][j]} (${championNames[i][j]}) ${playerGolds[i][j]}`;
+      //   if (j < 5){
+      //     bluePlayers.append(player);
+      //   }
+      //   else {
+      //     redPlayers.append(player);
+      //   }
+      // }
+
+      let newblueTable = document.createElement('table');
+      newblueTable.setAttribute('style', 'width:100%');
+      let newredTable = document.createElement('table');
+      newredTable.setAttribute('style', 'width:100%');
+      bluePlayers.append(newblueTable);
+      redPlayers.append(newredTable);
+
+      let newRow1 = document.createElement('tr');
+      newRow1.innerHTML = '<th> Role </th> <th> Player Name </th> <th> Champion Name </th> </tr > <th> Gold </th>';
+      newblueTable.append(newRow1);
+      let newRow2 = document.createElement('tr');
+      newRow2.innerHTML = '<th> Role </th> <th> Player Name </th> <th> Champion Name </th> </tr > <th> Gold </th>';
+      newredTable.append(newRow2);
+
+      for (let j = 0; j < playerNames[i].length; j++) {
+        let role;
+        switch (j % 5) {
+          case 0: role = 'Top'; break;
+          case 1: role = 'Jungle'; break;
+          case 2: role = 'Mid'; break;
+          case 3: role = 'ADC'; break;
+          case 4: role = 'Support'; break;
         }
-        else {
-          redPlayers.append(player);
+
+        let player = document.createElement('tr');
+        player.innerHTML = `<td> ${role} </td> <td> ${playerNames[i][j]} </td> <td> ${championNames[i][j]} </td> <td> ${playerGolds[i][j]} </td> `;
+        if (j < 5) {
+          newblueTable.append(player);
+        } else {
+          newredTable.append(player);
         }
       }
-
 
       
     }

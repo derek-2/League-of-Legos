@@ -194,9 +194,21 @@ export default class RedTeamOnly {
 
       // add info about each player's name, champ, and gold at the end of the game
 
-      // create table header for each game
-      // let newTable = document.createElement('tr');
-      // let tableHeader = document.createElement('th');
+      // create table for each game
+      let newblueTable = document.createElement('table');
+      newblueTable.setAttribute('style','width:100%');
+      let newredTable = document.createElement('table');
+      newredTable.setAttribute('style','width:100%');
+      bluePlayers.append(newblueTable);
+      redPlayers.append(newredTable);
+
+      let newRow1 = document.createElement('tr');
+      newRow1.innerHTML ='<th> Role </th> <th> Player Name </th> <th> Champion Name </th> </tr > <th> Gold </th>';
+      newblueTable.append(newRow1);
+      let newRow2 = document.createElement('tr');
+      newRow2.innerHTML = '<th> Role </th> <th> Player Name </th> <th> Champion Name </th> </tr > <th> Gold </th>';
+      newredTable.append(newRow2);
+
       for (let j = 0; j< playerNames[i].length; j++){
         let role;
         switch(j%5){
@@ -206,12 +218,13 @@ export default class RedTeamOnly {
           case 3: role = 'ADC'; break;
           case 4: role = 'Support'; break;
         }
-        let player = document.createElement('p');
-        player.innerHTML = `${role}: ${playerNames[i][j]} (${championNames[i][j]}) ${playerGolds[i][j]}`;
+
+        let player = document.createElement('tr');
+        player.innerHTML = `<td> ${role} </td> <td> ${playerNames[i][j]} </td> <td> ${championNames[i][j]} </td> <td> ${playerGolds[i][j]} </td> `;
         if (j < 5){
-          bluePlayers.append(player);
+          newblueTable.append(player);
         } else {
-          redPlayers.append(player);
+          newredTable.append(player);
         }
       }
       
