@@ -206,3 +206,8 @@ h1 {
   width: 100%;
   align: left;
 }
+
+table, th, td {
+  border: 1px solid;
+  padding: 3px;
+}
