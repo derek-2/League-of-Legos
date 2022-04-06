@@ -13,18 +13,26 @@
 
 <body>
   <main id="main">
-    <h1>League of Legos</h1>
     <div id="top-bar">
       <h2 id="overall-record"></h2>
     </div>
+    
+    <nav class="center">
+      <h1 class="center">League of Legos</h1>
+      <ul class="right">
+        <li class="right"><a href="https://github.com/derek-2/NALeague"><img id="github-img" src="../images/github.png" alt="github"></a></li>
+      </ul>
+    </nav>
 
-      <div id="everything-else">
-        <label class="right">Blue Team: <input type="text" id="team1" placeholder="TSM"></label>
-        <label class="right">Red Team: <input type="text" id="team2" placeholder="C9"></label>
-        <button id="search-btn" class="right">Search</button>
+    <div id="everything-else">
+      <div class="top-bar center">
+          <img id="league-img" src="../images/background.jpg" alt="league of legos">
+          <label class="inside input-field"><input type="text" id="team1" placeholder="Blue Team"></label>
+          <label class="inside input-field"><input type="text" id="team2" placeholder="Red Team"></label>
+          <button id="search-btn" >Search</button>
       </div>
+    </div>
       
-    <img src="https://tinyurl.com/yy6h8wc8" alt="league of legos">
     <div id="stats"></div>
   </main>
 </body>
