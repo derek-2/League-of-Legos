@@ -23,12 +23,15 @@ class Data {
     let playerNames = []; // blue players, red players
     let championNames = []; // blue champions, red champions
     let bans = [];
+    let team2tags = [];
 
     await d3.csv('../../data/LeagueofLegends.csv', function(d){
-      if (d.blueTeamTag === team1 && d.redTeamTag === team2){
+      if ((d.blueTeamTag === team1 && !team2) || (d.blueTeamTag === team1 && d.redTeamTag === team2)){
         // debugger;
         games.push(d);
-
+        if (!team2){
+          team2tags.push(d.redTeamTag);
+        }
         // matchInfo.push([d.League, d.Year, d.Season, d.Type]);
         // debugger;
         if (parseInt(d.bResult) === 1){
@@ -78,6 +81,7 @@ class Data {
 
       }
     });
+    debugger;
     let headtohead = document.getElementById('overall-record');
     headtohead.innerHTML = `${team1} ${blueWins} - ${redWins} ${team2}`;
     // debugger;
@@ -103,7 +107,7 @@ class Data {
       
       let redPlayers = document.createElement('div');
       let redteamLabel = document.createElement('h2');
-      redteamLabel.innerText = `${team2}`;
+      redteamLabel.innerText = `${team2tags[i]}`;
       redPlayers.setAttribute('id', `redteam${i}`);
       redPlayers.setAttribute('class', 'players-container red');
       redPlayers.append(redteamLabel);
