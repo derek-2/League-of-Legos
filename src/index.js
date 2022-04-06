@@ -14,7 +14,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     // get input values
     let team1 = document.getElementById('team1').value.toUpperCase();
     let team2 = document.getElementById('team2').value.toUpperCase();
-    // debugger;
+
     if (!team1 && !team2){
       alert('enter valid teams!');
     }

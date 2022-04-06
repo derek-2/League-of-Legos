@@ -164,10 +164,10 @@ class Data {
       redPlayers.append(newredTable);
 
       let newRow1 = document.createElement('tr');
-      newRow1.innerHTML = '<th> Role </th> <th> Player Name </th> <th> Champion Name </th> </tr > <th> Gold </th>';
+      newRow1.innerHTML = '<tr><th><b>Role</b></th><th><b>Player Name</b></th><th><b>Champion Name</b></th><th><b>Gold</b></th></tr>';
       newblueTable.append(newRow1);
       let newRow2 = document.createElement('tr');
-      newRow2.innerHTML = '<th> Role </th> <th> Player Name </th> <th> Champion Name </th> </tr > <th> Gold </th>';
+      newRow2.innerHTML = '<tr><th><b>Role</b></th><th><b>Player Name</b></th><th><b>Champion Name</b></th><th><b>Gold</b></th></tr>';
       newredTable.append(newRow2);
 
       for (let j = 0; j < playerNames[i].length; j++) {
@@ -191,7 +191,7 @@ class Data {
 
       
     }
-    // debugger;
+
   } // end of async function
 
 

@@ -27,11 +27,11 @@ export default class RedTeamOnly {
     let blueTeamTags = [];
 
     await d3.csv('../../data/LeagueofLegends.csv', function (d){
-      // debugger;
+
       if (d.redTeamTag === team2){
 
         blueTeamTags.push(d.blueTeamTag);
-        // debugger;
+
         matchInfo.push([d.Year, d.Season, d.Type, d.League]);
         if (parseInt(d.bResult) === 1){
           blueWins += 1;
@@ -120,8 +120,8 @@ export default class RedTeamOnly {
       blueattach.append(blueBans);
       redattach.append(redBans);
       
-      blueBans.innerHTML = `Bans: ${allblueBans[i].join(", ")}`;
-      redBans.innerHTML = `Bans: ${allredBans[i].join(", ")}`;
+      blueBans.innerHTML = `<b>Bans:</b> ${allblueBans[i].join(", ")}`;
+      redBans.innerHTML = `<b>Bans:</b> ${allredBans[i].join(", ")}`;
 
 
       // generating match info
@@ -203,10 +203,10 @@ export default class RedTeamOnly {
       redPlayers.append(newredTable);
 
       let newRow1 = document.createElement('tr');
-      newRow1.innerHTML ='<th> Role </th> <th> Player Name </th> <th> Champion Name </th> </tr > <th> Gold </th>';
+      newRow1.innerHTML ='<tr><th><b>Role</b></th><th><b>Player Name</b></th><th><b>Champion Name</b></th><th><b>Gold</b></th></tr>';
       newblueTable.append(newRow1);
       let newRow2 = document.createElement('tr');
-      newRow2.innerHTML = '<th> Role </th> <th> Player Name </th> <th> Champion Name </th> </tr > <th> Gold </th>';
+      newRow2.innerHTML = '<tr><th><b>Role</b></th><th><b>Player Name</b></th><th><b>Champion Name</b></th><th><b>Gold</b></th></tr>';
       newredTable.append(newRow2);
 
       for (let j = 0; j< playerNames[i].length; j++){
@@ -232,10 +232,6 @@ export default class RedTeamOnly {
 
     } // end of iterating through each game
 
-
-    
-    
-    debugger;
   } //end of async
 
 
