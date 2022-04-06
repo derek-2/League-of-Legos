@@ -28,13 +28,16 @@
   margin: 10px;
   padding: 10px;
   display: flex;
+  // background-color: #0058bd;
 }
 
 .players-container {
-  margin: 10px;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-top: 15px;
   color: blue;
-
-  // margin: 5px;
+  margin-top: 25px;
+  width: 500px;
 }
 
 .red{
@@ -42,12 +45,12 @@
 }
 
 h2 {
-  color: black;
-  // font-weight: bolder;
+  // color: black;
+  font-weight: bolder;
+  font-size: 40px;
 }
 
 main {
-  padding: 10px;
   font-family: 'Courier New',
   Courier,
   monospace;
@@ -55,20 +58,16 @@ main {
 
 h1 {
   font-size: 50px;
+  font-weight: bolder;
 }
 
 .playerinfotable {
   width: 100%;
-  // align: left;
 }
 table,th,td {
   border: 1px solid;
   padding: 3px;
-}
-
-.top-bar {
-  margin: 10px;
-  width: 100%;
+  font-weight: bolder;
 }
 
 .inside {
@@ -86,9 +85,11 @@ table,th,td {
 }
 
 .center {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
+  display: absoulute;
+  
 }
 
 #team1, #team2 {
@@ -100,4 +101,55 @@ table,th,td {
 a {
   text-decoration: none;
   color: inherit;
+}
+
+#overall-record {
+  font-size: 40px;
+  font-weight: bolder;
+}
+
+.game-info > p:first-child {
+  position: absolute;
+  font-weight: bolder;
+  font-size: 15px;
+}
+
+.center-search {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+}
+
+.top-middle {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%
+}
+
+.gold-graph {
+  position: relative;
+  top: 70px;
+}
+
+.hidden {
+  display: none;
+}
+
+#spoilers {
+  position: fixed;
+  left: 93%;
+  border: solid black 1px;
+  padding: 5px;
+}
+#spoilers:hover{
+  cursor: default;
+}
+
+.winner {
+  position: absolute;
+  left: 90%;
+  margin-top: 15px;
 }

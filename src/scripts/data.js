@@ -25,6 +25,7 @@ class Data {
     let bans = [];
     let team2tags = [];
     let team1tags = [];
+    let winners = [];
 
     await d3.csv('../../data/LeagueofLegends.csv', function(d){
       if ((d.blueTeamTag === team1 && !team2) || (d.blueTeamTag === team1 && d.redTeamTag === team2)){
@@ -35,9 +36,11 @@ class Data {
         // matchInfo.push([d.League, d.Year, d.Season, d.Type]);
         if (parseInt(d.bResult) === 1){
           blueWins+=1;
+          winners.push(d.blueTeamTag);
         }
         else {
           redWins+=1;
+          winners.push(d.redTeamTag);
         }
 
 
@@ -141,8 +144,8 @@ class Data {
 
 
 
-      let newMatchInfo = new MatchInfo(i, team1, team2);
       let newGoldDiff = new GoldDiff(i,team1, team2);
+      let newMatchInfo = new MatchInfo(i, team1, team2);
       let newGoldShare = new GoldShare(i, playerNames[i], playerGolds[i]);
 
       // for(let j=0; j< playerNames[i].length; j++){
@@ -172,23 +175,35 @@ class Data {
 
       for (let j = 0; j < playerNames[i].length; j++) {
         let role;
+        let color;
         switch (j % 5) {
-          case 0: role = 'Top'; break;
-          case 1: role = 'Jungle'; break;
-          case 2: role = 'Mid'; break;
-          case 3: role = 'ADC'; break;
-          case 4: role = 'Support'; break;
+          case 0: role = 'Top'; color='#66c2a5'; break;
+          case 1: role = 'Jungle'; color='#fc8d62'; break;
+          case 2: role = 'Mid'; color='#8da0cb'; break;
+          case 3: role = 'ADC'; color='#e78ac3'; break;
+          case 4: role = 'Support'; color='#a6d854'; break;
         }
+        // top: rgb(102, 194, 165)
+        // jungle: rgb(252, 141, 98)
+        // mid: rgb(141, 160, 203)
+        // adc: rgb(231, 138, 195)
+        // support: rgb(166, 216, 84)
 
         let player = document.createElement('tr');
         player.innerHTML = `<td> ${role} </td> <td> ${playerNames[i][j]} </td> <td> ${championNames[i][j]} </td> <td> ${playerGolds[i][j]} </td> `;
+        player.setAttribute('style', `color:${color}`);
         if (j < 5) {
           newblueTable.append(player);
         } else {
           newredTable.append(player);
         }
       }
-
+      // lalaala
+      let winner = document.createElement('h2');
+      winner.setAttribute('class','winner hidden');
+      winner.setAttribute('id',`winner${i}`)
+      winner.innerHTML = `Winner: ${winners[i]}`;
+      gameInfo.appendChild(winner);
       
     }
 

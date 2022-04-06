@@ -25,6 +25,7 @@ export default class RedTeamOnly {
     let playerGolds = [];
     let goldDiffy = [];
     let blueTeamTags = [];
+    let winners = [];
 
     await d3.csv('../../data/LeagueofLegends.csv', function (d){
 
@@ -35,8 +36,10 @@ export default class RedTeamOnly {
         matchInfo.push([d.Year, d.Season, d.Type, d.League]);
         if (parseInt(d.bResult) === 1){
           blueWins += 1;
+          winners.push(d.blueTeamTag);
         } else {
           redWins += 1;
+          winners.push(d.redTeamTag);
         }
         let parsedBlueBans = d.blueBans.slice(1,d.blueBans.length-1).replaceAll("'","").split(",");
         let parsedRedBans = d.redBans.slice(1,d.redBans.length-1).replaceAll("'","").split(",");
@@ -127,17 +130,18 @@ export default class RedTeamOnly {
       // generating match info
       let container = document.getElementById(`game-${i}`);
       let generalMatchInfo = document.createElement('p');
-      generalMatchInfo.innerHTML = `${matchInfo[i][0]} d ${matchInfo[i][1]} ${matchInfo[i][2]} ${matchInfo[i][3]}`;
+      generalMatchInfo.innerHTML = `${matchInfo[i][0]} ${matchInfo[i][1]} ${matchInfo[i][2]} ${matchInfo[i][3]}`;
       container.prepend(generalMatchInfo);
 
       // gold difference chart
       let goldGraph = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
       goldGraph.setAttribute('id', `gold-graph-${i}`);
+      goldGraph.setAttribute('class', 'gold-graph');
       let gameInfoContainer = document.getElementById(`game-${i}`);
 
       gameInfoContainer.append(goldGraph);
 
-      const svgWidth = 600, svgHeight = 400;
+      const svgWidth = 400, svgHeight = 400;
       const margin = { top: 20, right: 20, bottom: 30, left: 50 };
       const width = svgWidth - margin.left - margin.right;
       const height = svgHeight - margin.top - margin.bottom;
@@ -210,24 +214,30 @@ export default class RedTeamOnly {
       newredTable.append(newRow2);
 
       for (let j = 0; j< playerNames[i].length; j++){
-        let role;
+        let role,color;
         switch(j%5){
-          case 0: role = 'Top'; break;
-          case 1: role = 'Jungle'; break;
-          case 2: role = 'Mid'; break;
-          case 3: role = 'ADC'; break;
-          case 4: role = 'Support'; break;
+          case 0: role = 'Top'; color = '#66c2a5'; break;
+          case 1: role = 'Jungle'; color = '#fc8d62'; break;
+          case 2: role = 'Mid'; color = '#8da0cb'; break;
+          case 3: role = 'ADC'; color = '#e78ac3'; break;
+          case 4: role = 'Support'; color = '#a6d854'; break;
         }
 
         let player = document.createElement('tr');
         player.innerHTML = `<td> ${role} </td> <td> ${playerNames[i][j]} </td> <td> ${championNames[i][j]} </td> <td> ${playerGolds[i][j]} </td> `;
+        player.setAttribute('style',`color:${color}`);
         if (j < 5){
           newblueTable.append(player);
         } else {
           newredTable.append(player);
         }
       }
-      
+      let winner = document.createElement('h2');
+      winner.setAttribute('class', 'winner hidden');
+      winner.setAttribute('id', `Winner: winner${i}}`);
+      winner.innerHTML = winners[i];
+      gameInfo.append(winner);
+
 
 
     } // end of iterating through each game
