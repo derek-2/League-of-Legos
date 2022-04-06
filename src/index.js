@@ -12,6 +12,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
     let team2Field = document.getElementById('team2');
     team1Field.value="";
     team2Field.value="";
+    showSpoilersBtn()
+  }
+  function showSpoilersBtn(){
+    let spoilerBtn = document.getElementById('spoilers');
+    spoilerBtn.classList.remove('hidden');
   }
   let statsdiv = document.getElementById('stats');
   console.log('hello');
@@ -88,8 +93,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   let spoilerTag = document.getElementById('spoilers');
 
   spoilerTag.addEventListener('click', function(e){
-    let allSpoilers = document.getElementsByClassName('hidden');
-    debugger;
+    let allSpoilers = Array.from(document.getElementsByClassName('hidden'));
     for(let j= 0; j<allSpoilers.length; j++){
       allSpoilers[j].classList.remove('hidden');
     }
