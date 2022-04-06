@@ -1,4 +1,5 @@
 import Data from "./scripts/data"; // import Data class from data.js
+import RedTeamOnly from "./scripts/redTeamOnly";
 
 window.addEventListener('DOMContentLoaded', (event) => {
   function emptyChildren(parent) {
@@ -13,13 +14,19 @@ window.addEventListener('DOMContentLoaded', (event) => {
     // get input values
     let team1 = document.getElementById('team1').value.toUpperCase();
     let team2 = document.getElementById('team2').value.toUpperCase();
-    
-    if (!team1){
+    // debugger;
+    if (!team1 && !team2){
       alert('enter valid teams!');
     }
-    else {
+    else if (team1){
+      // console.log('in else if');
       emptyChildren(statsdiv);
       let request = new Data(team1, team2);
+    }
+    else {
+      emptyChildren(statsdiv)
+      // console.log('only search red team!');
+      let request = new RedTeamOnly(team2);
     }
   });
 
@@ -30,7 +37,19 @@ window.addEventListener('DOMContentLoaded', (event) => {
       emptyChildren(statsdiv);
       let team1 = document.getElementById('team1').value.toUpperCase();
       let team2 = document.getElementById('team2').value.toUpperCase();
-      let request = new Data(team1, team2);
+      if (!team1 && !team2) {
+        alert('enter valid teams!');
+      }
+      else if (team1) {
+        // console.log('in else if');
+        emptyChildren(statsdiv);
+        let request = new Data(team1, team2);
+      }
+      else {
+        emptyChildren(statsdiv)
+        // console.log('only search red team!');
+        let request = new RedTeamOnly(team2);
+      }
     }
   });
   secondTeam.addEventListener('keypress', function (e){
@@ -38,7 +57,19 @@ window.addEventListener('DOMContentLoaded', (event) => {
       emptyChildren(statsdiv);
       let team1 = document.getElementById('team1').value.toUpperCase();
       let team2 = document.getElementById('team2').value.toUpperCase();
-      let request = new Data(team1, team2);
+      if (!team1 && !team2) {
+        alert('enter valid teams!');
+      }
+      else if (team1) {
+        // console.log('in else if');
+        emptyChildren(statsdiv);
+        let request = new Data(team1, team2);
+      }
+      else {
+        emptyChildren(statsdiv)
+        // console.log('only search red team!');
+        let request = new RedTeamOnly(team2);
+      }
     }
   });
   

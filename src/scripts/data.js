@@ -99,7 +99,7 @@ class Data {
       let blueteamLabel = document.createElement('h2');
       blueteamLabel.innerText = `${team1tags[i]}`;
       bluePlayers.setAttribute('id', `blueteam${i}`);
-      bluePlayers.setAttribute('class', 'players-container');
+      bluePlayers.setAttribute('class', 'players-container blue');
       bluePlayers.append(blueteamLabel);
       
       let redPlayers = document.createElement('div');
@@ -136,8 +136,8 @@ class Data {
         allRedsBans.push(bans[i][c]);
       }
 
-      bluesBans.innerHTML = allBluesBans.join(" ");
-      redsBans.innerHTML = allRedsBans.join(" ");
+      bluesBans.innerHTML = `<b>Bans:</b> ${allBluesBans.join(", ")}`;
+      redsBans.innerHTML = `<b>Bans:</b> ${allRedsBans.join(", ")}`;
 
 
 
@@ -146,15 +146,12 @@ class Data {
       let newGoldShare = new GoldShare(i, playerNames[i], playerGolds[i]);
 
       for(let j=0; j< playerNames[i].length; j++){
+        let player = document.createElement('p');
+        player.innerHTML = `${playerNames[i][j]} (${championNames[i][j]}) ${playerGolds[i][j]}`;
         if (j < 5){
-          let player = document.createElement('p');
-
-          player.innerHTML = `${playerNames[i][j]} (${championNames[i][j]}) ${playerGolds[i][j]}`;
           bluePlayers.append(player);
         }
         else {
-          let player = document.createElement('p');
-          player.innerHTML = `${playerNames[i][j]} (${championNames[i][j]}) ${playerGolds[i][j]}`;
           redPlayers.append(player);
         }
       }
@@ -162,7 +159,7 @@ class Data {
 
       
     }
-
+    // debugger;
   } // end of async function
 
 

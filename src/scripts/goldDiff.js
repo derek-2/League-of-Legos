@@ -60,7 +60,6 @@ class GoldDiff {
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x))
       .select(".domain")
-      .remove()
       .append("text")
       .text("Minute");
 
