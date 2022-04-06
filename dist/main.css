@@ -201,3 +201,8 @@ h1 {
 #everything-else {
   display: flex;
 }
+
+.playerinfotable {
+  width: 100%;
+  align: left;
+}

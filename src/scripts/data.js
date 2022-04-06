@@ -157,9 +157,9 @@ class Data {
       // }
 
       let newblueTable = document.createElement('table');
-      newblueTable.setAttribute('style', 'width:100%');
+      newblueTable.setAttribute('class', 'playerinfotable');
       let newredTable = document.createElement('table');
-      newredTable.setAttribute('style', 'width:100%');
+      newredTable.setAttribute('class', 'playerinfotable');
       bluePlayers.append(newblueTable);
       redPlayers.append(newredTable);
 
