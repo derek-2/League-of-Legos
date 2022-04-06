@@ -3,7 +3,6 @@ class GoldDiff {
     this.gameNum = gameNum;
     this.team1 = team1;
     this.team2 = team2;
-    // debugger;
     this.generateGoldGraph(gameNum, team1, team2);
   }
 
@@ -86,9 +85,9 @@ class GoldDiff {
 
 
     // ------------------------------------------------------
-    // debugger;
 
-    // debugger;
+
+
   }
 
 

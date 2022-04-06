@@ -19,7 +19,7 @@ class GoldShare {
     for (let i =0; i<5; i++){
       blueData[playerNames[i]] = playerGolds[i];
     }
-    // debugger;
+
     const width = 450;
     const height = 450;
     const margin = 40;
@@ -27,7 +27,7 @@ class GoldShare {
     const radius = Math.min(width, height) / 2 - margin
     
     // let blueGoldShare = document.createElement('div');
-    // debugger;
+
     const svg = d3.select(`#blueteam${i}`)
       .append("svg")
       .attr("width", width)
@@ -76,7 +76,7 @@ class GoldShare {
         redData[playerNames[i]] = playerGolds[i];
       }
     }
-    // debugger;
+
     const width = 450;
     const height = 450;
     const margin = 40;
@@ -85,7 +85,7 @@ class GoldShare {
     /// -------------------------------------------------------------------------------
 
     // let redGoldShare = document.createElement('div');
-    // debugger;
+
     const svg = d3.select(`#redteam${i}`)
       .append("svg")
       .attr("width", width)

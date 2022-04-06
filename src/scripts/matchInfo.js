@@ -20,7 +20,7 @@ class MatchInfo {
     // have to call getMatchInfo before the data b/c formating
     // or we can just try to prepend it instead of appending
     let generalMatchInfo = document.createElement('p');
-    // debugger;
+
       generalMatchInfo.innerHTML = `${matchInfo[gameNum][0]} ${matchInfo[gameNum][1]} ${matchInfo[gameNum][2]} ${matchInfo[gameNum][3]}`;
       container.prepend(generalMatchInfo);
     

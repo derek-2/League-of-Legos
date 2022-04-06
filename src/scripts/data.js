@@ -24,16 +24,15 @@ class Data {
     let championNames = []; // blue champions, red champions
     let bans = [];
     let team2tags = [];
+    let team1tags = [];
 
     await d3.csv('../../data/LeagueofLegends.csv', function(d){
       if ((d.blueTeamTag === team1 && !team2) || (d.blueTeamTag === team1 && d.redTeamTag === team2)){
-        // debugger;
         games.push(d);
-        if (!team2){
-          team2tags.push(d.redTeamTag);
-        }
+        team2tags.push(d.redTeamTag);
+        team1tags.push(d.blueTeamTag);
+        
         // matchInfo.push([d.League, d.Year, d.Season, d.Type]);
-        // debugger;
         if (parseInt(d.bResult) === 1){
           blueWins+=1;
         }
@@ -69,38 +68,36 @@ class Data {
         championNames.push([d.blueTopChamp, d.blueJungleChamp, d.blueMiddleChamp, d.blueADCChamp, d.blueSupportChamp,d.redTopChamp, d.redJungleChamp, d.redMiddleChamp, d.redADCChamp, d.redSupportChamp]);
 
         // get bans of both teams, could have just used JSON.parse
-        // debugger;
         let currentblueBans = d.blueBans.slice(1,d.blueBans.length-1).replaceAll("'","").split(",");
         currentblueBans = currentblueBans.map(ban => ban.trim());
         let currentredBans = d.redBans.slice(1,d.redBans.length-1).replaceAll("'","").split(",");
         currentredBans = currentredBans.map(ban => ban.trim());
-        // debugger;
         bans.push(currentblueBans.concat(currentredBans));
         
 
 
       }
     });
-    debugger;
+
     let headtohead = document.getElementById('overall-record');
     headtohead.innerHTML = `${team1} ${blueWins} - ${redWins} ${team2}`;
-    // debugger;
+
     let statsdiv = document.getElementById('stats');
-    // debugger;
+
 
     for( let i = 0; i < playerNames.length; i++){
       let gameInfo = document.createElement('div');
       gameInfo.setAttribute('id',`game-${i}`);
       gameInfo.setAttribute('class','game-info');
       statsdiv.append(gameInfo);
-      // debugger;
+
 
       
-      // debugger;
+
 
       let bluePlayers = document.createElement('div');
       let blueteamLabel = document.createElement('h2');
-      blueteamLabel.innerText = `${team1}`;
+      blueteamLabel.innerText = `${team1tags[i]}`;
       bluePlayers.setAttribute('id', `blueteam${i}`);
       bluePlayers.setAttribute('class', 'players-container');
       bluePlayers.append(blueteamLabel);
@@ -121,7 +118,7 @@ class Data {
       let redattach = document.getElementById(`redteam${i}`);
       let bluesBans = document.createElement('p');
       let redsBans = document.createElement('p');
-      // debugger;
+
       blueattach.append(bluesBans);
       redattach.append(redsBans);
 
@@ -129,19 +126,19 @@ class Data {
       let mid = bans[i].length/2;
       let allBluesBans = [];
       let allRedsBans = [];
-      debugger;
+
       for (let c = 0; c < mid; c++){
-        debugger;
+
         allBluesBans.push(bans[i][c]);
       }
       for (let c = mid; c < mid*2; c++){
-        debugger;
+
         allRedsBans.push(bans[i][c]);
       }
 
       bluesBans.innerHTML = allBluesBans.join(" ");
       redsBans.innerHTML = allRedsBans.join(" ");
-      // debugger;
+
 
 
       let newMatchInfo = new MatchInfo(i, team1, team2);
@@ -151,7 +148,7 @@ class Data {
       for(let j=0; j< playerNames[i].length; j++){
         if (j < 5){
           let player = document.createElement('p');
-          // debugger;
+
           player.innerHTML = `${playerNames[i][j]} (${championNames[i][j]}) ${playerGolds[i][j]}`;
           bluePlayers.append(player);
         }
@@ -165,8 +162,7 @@ class Data {
 
       
     }
-  
-    // debugger;
+
   } // end of async function
 
 

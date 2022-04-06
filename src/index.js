@@ -19,7 +19,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
     }
     else {
       emptyChildren(statsdiv);
-      // debugger;
       let request = new Data(team1, team2);
     }
   });
@@ -28,7 +27,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
   const secondTeam = document.getElementById('team2');
   firstTeam.addEventListener('keypress', function (e){
     if (e.key === 'Enter'){
-      // debugger;
       emptyChildren(statsdiv);
       let team1 = document.getElementById('team1').value.toUpperCase();
       let team2 = document.getElementById('team2').value.toUpperCase();
@@ -37,7 +35,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
   });
   secondTeam.addEventListener('keypress', function (e){
     if (e.key === 'Enter'){
-      // debugger;
       emptyChildren(statsdiv);
       let team1 = document.getElementById('team1').value.toUpperCase();
       let team2 = document.getElementById('team2').value.toUpperCase();
