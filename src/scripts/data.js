@@ -3,7 +3,6 @@ import GoldShare from "./goldShare";
 import MatchInfo from "./matchInfo";
 class Data {
   constructor(team1, team2){
-    console.log('hello');
     this.team1 = team1;
     this.team2 = team2;
     this.generateData(team1, team2);

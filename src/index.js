@@ -19,7 +19,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     spoilerBtn.classList.remove('hidden');
   }
   let statsdiv = document.getElementById('stats');
-  console.log('hello');
+
   const searchButton = document.getElementById('search-btn');
   searchButton.addEventListener('click', () => {
     // get input values
@@ -30,14 +30,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
       alert('enter valid teams!');
     }
     else if (team1){
-      // console.log('in else if');
       emptyChildren(statsdiv);
       let request = new Data(team1, team2);
       clearSearchFields();
     }
     else {
       emptyChildren(statsdiv)
-      // console.log('only search red team!');
       let request = new RedTeamOnly(team2);
       clearSearchFields();
     }
@@ -54,14 +52,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
         alert('enter valid teams!');
       }
       else if (team1) {
-        // console.log('in else if');
         emptyChildren(statsdiv);
         let request = new Data(team1, team2);
         clearSearchFields();
       }
       else {
         emptyChildren(statsdiv)
-        // console.log('only search red team!');
         let request = new RedTeamOnly(team2);
         clearSearchFields();
       }
@@ -76,14 +72,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
         alert('enter valid teams!');
       }
       else if (team1) {
-        // console.log('in else if');
         emptyChildren(statsdiv);
         let request = new Data(team1, team2);
         clearSearchFields();
       }
       else {
         emptyChildren(statsdiv)
-        // console.log('only search red team!');
         let request = new RedTeamOnly(team2);
         clearSearchFields();
       }
