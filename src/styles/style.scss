@@ -25,10 +25,9 @@
 }
 .game-info {
   border: solid blue 2px;
-  margin: 10px;
+  margin: 2px;
   padding: 10px;
   display: flex;
-  // background-color: #0058bd;
 }
 
 .players-container {
@@ -56,6 +55,11 @@ main {
   monospace;
 }
 
+#stats {
+  // background-color: #8ae9ff;
+  background-color: #c4f4ff;
+}
+
 h1 {
   font-size: 60px;
   font-weight: bolder;
@@ -76,7 +80,7 @@ table,th,td {
 
 #league-img {
   width: 100%;
-  height:75%;
+  height:100%;
 }
 
 #github-img {
