@@ -209,12 +209,6 @@ class Data {
 
   } // end of async function
 
-
-
-
-
-
-
 } // ending curly brace for class
 
 // export Data class
