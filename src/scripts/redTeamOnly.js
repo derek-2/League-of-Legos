@@ -27,7 +27,7 @@ export default class RedTeamOnly {
     let blueTeamTags = [];
     let winners = [];
 
-    await d3.csv('../../src/LeagueofLegends.csv', function (d){
+    await d3.csv('../src/data/LeagueofLegends.csv', function (d){
 
       if (d.redTeamTag === team2){
 

@@ -9,7 +9,7 @@ class GoldDiff {
   async generateGoldGraph(gameNum, team1, team2) {
     let goldDiffy = [];
 
-    await d3.csv('../../src/LeagueofLegends.csv', function (d) {
+    await d3.csv('../src/data/LeagueofLegends.csv', function (d) {
       if ((d.blueTeamTag === team1 && !team2) || (d.blueTeamTag === team1 && d.redTeamTag === team2)) {
 
         let goldDiff = JSON.parse(d.golddiff).map((ele, idx) => {
