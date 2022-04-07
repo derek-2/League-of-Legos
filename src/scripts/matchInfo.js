@@ -8,7 +8,7 @@ class MatchInfo {
 
   async getMatchInfo(gameNum, team1, team2) {
     let matchInfo = [];
-    await d3.csv('./src/data/LeagueofLegends.csv', function (d) {
+    await d3.csv('../src/data/LeagueofLegends.csv', function (d) {
       if ((d.blueTeamTag === team1 && !team2) || (d.blueTeamTag === team1 && d.redTeamTag === team2)) {
         matchInfo.push([d.Year, d.Season, d.Type, d.League]);
       }
