@@ -26,7 +26,8 @@ class Data {
     let team1tags = [];
     let winners = [];
 
-    await d3.csv('../../data/LeagueofLegends.csv', function(d){
+    await d3.csv('../../src/LeagueofLegends.csv', function(d){
+      debugger;
       if ((d.blueTeamTag === team1 && !team2) || (d.blueTeamTag === team1 && d.redTeamTag === team2)){
         games.push(d);
         team2tags.push(d.redTeamTag);
