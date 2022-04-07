@@ -146,7 +146,7 @@ table {
   cursor: pointer;
   display: inline-flex;
   font-family: "JetBrains Mono", monospace;
-  height: 48px;
+  height: 44px;
   justify-content: center;
   line-height: 1;
   overflow: hidden;
@@ -191,7 +191,7 @@ main {
 }
 
 h1 {
-  font-size: 50px;
+  font-size: 60px;
   font-weight: bolder;
 }
 
@@ -271,17 +271,28 @@ a {
 
 #spoilers {
   position: fixed;
-  left: 93%;
+  top: 1%;
+  left: 94%;
   border: solid black 1px;
   padding: 5px;
+  background-color: white;
+  z-index: 100;
+  width: 70px;
 }
 
 #spoilers:hover {
-  cursor: default;
+  cursor: pointer;
 }
 
 .winner {
   position: absolute;
-  left: 90%;
-  margin-top: 15px;
+  left: 89%;
+}
+
+ul {
+  display: flex;
+}
+
+ul > li {
+  padding: 5px;
 }
