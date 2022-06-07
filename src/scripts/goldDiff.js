@@ -3,13 +3,13 @@ class GoldDiff {
     this.gameNum = gameNum;
     this.team1 = team1;
     this.team2 = team2;
-    this.generateGoldGraph(gameNum, team1, team2);
+    // this.generateGoldGraph(gameNum, team1, team2);
   }
 
   async generateGoldGraph(gameNum, team1, team2) {
     let goldDiffy = [];
 
-    await d3.csv('https://derek-2.github.io/NALeague/src/data/LeagueofLegends.csv', function (d) {
+    await d3.csv('./src/data/LeagueofLegends.csv', function (d) {
       if ((d.blueTeamTag === team1 && !team2) || (d.blueTeamTag === team1 && d.redTeamTag === team2)) {
 
         let goldDiff = JSON.parse(d.golddiff).map((ele, idx) => {

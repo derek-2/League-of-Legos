@@ -1,7 +1,8 @@
 export default class RedOnlyGoldShare {
   constructor(i, playerNames, playerGolds){
-    this.generateGoldShare(i, playerNames, playerGolds);
-    this.generateGoldShare2(i, playerNames, playerGolds);
+    this.i = i;
+    this.playerNames = playerNames;
+    this.playerGolds = playerGolds;
   }
 
   generateGoldShare(i, playerNames, playerGolds) {

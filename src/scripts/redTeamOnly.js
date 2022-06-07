@@ -27,7 +27,7 @@ export default class RedTeamOnly {
     let blueTeamTags = [];
     let winners = [];
 
-    await d3.csv('https://derek-2.github.io/NALeague/src/data/LeagueofLegends.csv', function (d){
+    await d3.csv('./src/data/LeagueofLegends.csv', function (d){
 
       if (d.redTeamTag === team2){
 
@@ -194,6 +194,8 @@ export default class RedTeamOnly {
 
       // start of gold share charts
       let newGoldShare = new RedOnlyGoldShare(i, playerNames[i], playerGolds[i]);
+      newGoldShare.generateGoldShare(i, playerNames[i], playerGolds[i]);
+      newGoldShare.generateGoldShare2(i, playerNames[i], playerGolds[i]);
 
 
       // add info about each player's name, champ, and gold at the end of the game

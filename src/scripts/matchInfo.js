@@ -3,12 +3,12 @@ class MatchInfo {
     this.gameNum = gameNum;
     this.team1 = team1;
     this.team2 = team2;
-    this.getMatchInfo(gameNum, team1, team2);
+    // this.getMatchInfo(gameNum, team1, team2);
   }
 
   async getMatchInfo(gameNum, team1, team2) {
     let matchInfo = [];
-    await d3.csv('https://derek-2.github.io/NALeague/src/data/LeagueofLegends.csv', function (d) {
+    await d3.csv('./src/data/LeagueofLegends.csv', function (d) {
       if ((d.blueTeamTag === team1 && !team2) || (d.blueTeamTag === team1 && d.redTeamTag === team2)) {
         matchInfo.push([d.Year, d.Season, d.Type, d.League]);
       }

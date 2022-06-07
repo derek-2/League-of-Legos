@@ -26,7 +26,7 @@ class Data {
     let team1tags = [];
     let winners = [];
 
-    await d3.csv('https://derek-2.github.io/NALeague/src/data/LeagueofLegends.csv', function(d){
+    await d3.csv('./src/data/LeagueofLegends.csv', function(d){
       if ((d.blueTeamTag === team1 && !team2) || (d.blueTeamTag === team1 && d.redTeamTag === team2)){
         games.push(d);
         team2tags.push(d.redTeamTag);
@@ -142,10 +142,16 @@ class Data {
       redsBans.innerHTML = `<b>Bans:</b> ${allRedsBans.join(", ")}`;
 
 
-
-      let newGoldDiff = new GoldDiff(i,team1, team2);
+    try {
+      let newGoldDiff = new GoldDiff(i, team1, team2);
+      await newGoldDiff.generateGoldGraph(i, team1, team2);
       let newMatchInfo = new MatchInfo(i, team1, team2);
+      await newMatchInfo.getMatchInfo(i, team1, team2)
       let newGoldShare = new GoldShare(i, playerNames[i], playerGolds[i]);
+    } catch {
+      return;
+    }
+
 
       // for(let j=0; j< playerNames[i].length; j++){
       //   let player = document.createElement('p');

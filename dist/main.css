@@ -275,8 +275,8 @@ a {
 
 #spoilers {
   position: fixed;
-  top: 1%;
-  left: 94%;
+  right: 10px;
+  top: 10px;
   border: solid black 1px;
   padding: 5px;
   background-color: white;
