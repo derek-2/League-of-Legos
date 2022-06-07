@@ -97,6 +97,11 @@ class Data {
       gameInfo.setAttribute('class','game-info');
       statsdiv.append(gameInfo);
 
+      let goldShareContainer = document.createElement('div');
+      goldShareContainer.setAttribute('id', `graph-container-${i}`);
+      goldShareContainer.setAttribute('class', 'gold-graphs')
+      gameInfo.append(goldShareContainer);
+
       let bluePlayers = document.createElement('div');
       let blueteamLabel = document.createElement('h2');
       blueteamLabel.innerText = `${team1tags[i]}`;
@@ -111,8 +116,8 @@ class Data {
       redPlayers.setAttribute('class', 'players-container red');
       redPlayers.append(redteamLabel);
 
-      gameInfo.append(bluePlayers);
-      gameInfo.append(redPlayers);
+      goldShareContainer.append(bluePlayers);
+      goldShareContainer.append(redPlayers);
 
 
       let blueattach = document.getElementById(`blueteam${i}`);
@@ -154,19 +159,29 @@ class Data {
 
       let newblueTable = document.createElement('table');
       newblueTable.setAttribute('class', 'playerinfotable');
-      let newredTable = document.createElement('table');
-      newredTable.setAttribute('class', 'playerinfotable');
-      bluePlayers.append(newblueTable);
-      redPlayers.append(newredTable);
+      gameInfo.append(newblueTable);
+
+      let newRow0 = document.createElement('tr');
+      newblueTable.append(newRow0);
+      
+      let newRow00 = document.createElement('th');
+      newRow00.innerHTML = '';
+
+      let newRow01 = document.createElement('th');
+      newRow01.colSpan=3;
+      newRow01.innerHTML = 'Blue Team';
+      
+      let newRow02 = document.createElement('th');
+      newRow02.innerHTML = 'Red Team';
+      newRow02.colSpan=3;
+
+      newRow0.append(newRow00, newRow01, newRow02);
 
       let newRow1 = document.createElement('tr');
-      newRow1.innerHTML = '<tr><th><b>Role</b></th><th><b>Player Name</b></th><th><b>Champion Name</b></th><th><b>Gold</b></th></tr>';
+      newRow1.innerHTML = '<tr><th><b>Role</b></th><th><b>Player</b></th><th><b>Champion</b></th><th><b>Gold</b></th><th><b>Gold</b></th><th><b>Champion</b></th><th><b>Player</b></th></tr>';
       newblueTable.append(newRow1);
-      let newRow2 = document.createElement('tr');
-      newRow2.innerHTML = '<tr><th><b>Role</b></th><th><b>Player Name</b></th><th><b>Champion Name</b></th><th><b>Gold</b></th></tr>';
-      newredTable.append(newRow2);
 
-      for (let j = 0; j < playerNames[i].length; j++) {
+      for (let j = 0; j < playerNames[i].length/2; j++) {
         let role;
         let color;
         switch (j % 5) {
@@ -178,20 +193,60 @@ class Data {
         }
 
         let player = document.createElement('tr');
-        player.innerHTML = `<td> ${role} </td> <td> ${playerNames[i][j]} </td> <td> ${championNames[i][j]} </td> <td> ${playerGolds[i][j]} </td> `;
+        player.setAttribute('id', `${role}-${i}`)
+        player.setAttribute('class', 'table-row')
+        player.innerHTML = `<td> ${role} </td> <td> ${playerNames[i][j]} </td> <td> ${championNames[i][j]} </td> <td> ${playerGolds[i][j]} </td> <td> ${playerGolds[i][j+5]} </td>  <td> ${championNames[i][j+5]} </td> <td> ${playerNames[i][j+5]} </td>`;
         player.setAttribute('style', `color:${color}`);
-        if (j < 5) {
-          newblueTable.append(player);
-        } else {
-          newredTable.append(player);
+        newblueTable.append(player);
+
+        const handleMouseOver = (player,i) => {
+          document.getElementById(`${player}-${i}`).style.stroke='yellow';
+          document.getElementById(`${player}-${i}`).style.transform='scale(1.1)';
+          document.getElementById(`${player}-${i}`).style.transitionDuration='.5s';
         }
+    
+        const handleMouseOut = (player, i) => {
+          document.getElementById(`${player}-${i}`).style.stroke='black';
+          document.getElementById(`${player}-${i}`).style.transform='scale(1)';
+          document.getElementById(`${player}-${i}`).style.transitionDuration='.5s';
+        }
+
+        player.addEventListener('mouseenter', () => {
+          handleMouseOver(playerNames[i][j], i)
+          handleMouseOver(playerNames[i][j+5], i)
+        })
+        player.addEventListener('mouseleave', () => {
+          handleMouseOut(playerNames[i][j], i)
+          handleMouseOut(playerNames[i][j+5], i)
+        })
+
       }
+      //toggle graphs
+      let toggleBtn = document.createElement('button');
+      toggleBtn.innerHTML = 'Switch Graphs'
+      gameInfo.append(toggleBtn);
+      toggleBtn.addEventListener('click', () => {
+        document.getElementById(`gold-graph-${i}`).classList.toggle('hidden');
+        document.getElementById(`blueteam${i}`).classList.toggle('hidden');
+        document.getElementById(`redteam${i}`).classList.toggle('hidden');
+      })
       // winner
-      let winner = document.createElement('h2');
-      winner.setAttribute('class','winner hidden');
+      let winner = document.createElement('button');
+      gameInfo.append(winner);
+      winner.setAttribute('class','winner');
       winner.setAttribute('id',`winner${i}`)
-      winner.innerHTML = `Winner: ${winners[i]}`;
+      winner.innerHTML = `Winner`;
       gameInfo.appendChild(winner);
+      let oldText = null;
+      winner.addEventListener('mouseenter', () => {
+        oldText = winner.innerHTML;
+        winner.innerHTML = winners[i];
+      })
+      winner.addEventListener('mouseleave', () => {
+        winner.innerHTML = oldText;
+      })
+
+
       
     }
     console.log(`data loaded in: ${(Date.now() - start)/1000}s`);

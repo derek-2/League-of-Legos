@@ -51,6 +51,7 @@ class GoldShare {
       .attr('d', arcGenerator)
       .attr('fill', function (d) { return (color(d.data[0])) })
       .attr("id", function(d) {return `${d.data[0]}-${i}`})
+      .attr("class", () => 'pie-chart')
       .attr("stroke", "black")
       .style("stroke-width", "2px")
       .style("opacity", 0.7)
@@ -62,6 +63,7 @@ class GoldShare {
       .join('text')
       .text(function (d) { return `${Math.round(d.data[1]/blueTotal*100)}%`})
       .attr("id", function(d) {return `${d.data[0]}-${i}-percentage`})
+      .attr("class", () => 'pie-chart')
       .attr("transform", function (d) { 
         let pos = arcGenerator.centroid(d);
         pos[0]*=1.3;
@@ -82,7 +84,7 @@ class GoldShare {
         pos[0]*=1.3;
         pos[1]*=1.3;
         return `translate(${pos})` })
-      .attr("class", () => 'hidden')
+      .attr("class", () => 'pie-chart hidden')
       .style("text-anchor", "middle")
       .style("font-size", 17)
 
@@ -130,6 +132,7 @@ class GoldShare {
       .attr('d', arcGenerator)
       .attr('fill', function (d) { return (color(d.data[0])) })
       .attr("id", function(d) {return `${d.data[0]}-${i}`})
+      .attr("class", () => 'pie-chart')
       .attr("stroke", "black")
       .style("stroke-width", "2px")
       .style("opacity", 0.7)
@@ -146,6 +149,7 @@ class GoldShare {
         pos[1]*=1.3;
         return `translate(${pos})` })
       .attr("id", function(d) {return `${d.data[0]}-${i}-percentage`})
+      .attr("class", () => 'pie-chart')
       .style("text-anchor", "middle")
       .style("font-size", 17)
       
@@ -161,7 +165,7 @@ class GoldShare {
         pos[0]*=1.3;
         pos[1]*=1.3;
         return `translate(${pos})` })
-      .attr("class", () => 'hidden')
+      .attr("class", () => 'pie-chart hidden')
       .style("text-anchor", "middle")
       .style("font-size", 17)
       

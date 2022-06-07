@@ -47,9 +47,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
   let spoilerTag = document.getElementById('spoilers');
 
   spoilerTag.addEventListener('click', function(e){
-    let allSpoilers = Array.from(document.getElementsByClassName('hidden'));
+    let allSpoilers = Array.from(document.getElementsByClassName('winner'));
     for(let j= 0; j<allSpoilers.length; j++){
-      allSpoilers[j].classList.remove('hidden');
+      allSpoilers[j].classList.toggle('hidden');
     }
   });
   

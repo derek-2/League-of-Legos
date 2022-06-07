@@ -3,14 +3,14 @@ class GoldDiff {
 
     let goldGraph = document.createElementNS('http://www.w3.org/2000/svg','svg');
     goldGraph.setAttribute('id', `gold-graph-${gameNum}`);
-    goldGraph.setAttribute('class', 'gold-graph');
-    let gameInfoContainer = document.getElementById(`game-${gameNum}`);
+    goldGraph.setAttribute('class', 'gold-graph hidden');
+    let graphContainer = document.getElementById(`graph-container-${gameNum}`);
     
-    gameInfoContainer.append(goldGraph);
+    graphContainer.prepend(goldGraph);
 
     // -------------------------------------------------------
 
-    const svgWidth = 450, svgHeight = 450;
+    const svgWidth = 900, svgHeight = 510;
     const margin = { top: 20, right: 20, bottom: 30, left: 50 };
     const width = svgWidth - margin.left - margin.right;
     const height = svgHeight - margin.top - margin.bottom;
@@ -39,7 +39,7 @@ class GoldDiff {
       .call(d3.axisBottom(x))
       .select(".domain")
       .append("text")
-      .text("Minute");
+      .text("Minute")
 
     g.append("g")
       .call(d3.axisLeft(y))

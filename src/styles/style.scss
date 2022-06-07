@@ -38,19 +38,17 @@
   margin: 2px;
   padding: 10px;
   display: flex;
+  flex-direction: column;
+}
+
+.gold-graphs {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 15px;
 }
 
 .players-container {
-  margin-left: 15px;
-  margin-right: 15px;
-  margin-top: 15px;
   color: blue;
-  margin-top: 25px;
-}
-
-.gold-graph {
-  position: relative;
-  top: 70px;
 }
 
 .red{
@@ -165,7 +163,9 @@ a {
 
 .winner {
   position: absolute;
-  left: 89%;
+  right: 15px;
+  width:60px;
+  line-height: 15px;
 }
 
 ul{
@@ -174,4 +174,12 @@ ul{
 
 ul > li {
   padding: 5px;
+}
+
+.pie-chart:hover{
+  cursor: pointer;
+}
+
+.table-row:hover{
+  border: 2px solid yellow;
 }
