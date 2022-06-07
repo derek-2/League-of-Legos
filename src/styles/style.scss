@@ -18,11 +18,21 @@
   position: relative;
   text-align: left;
   transition: box-shadow .15s, transform .15s;
-  touch-action: manipulation;
-  white-space: nowrap;
-  will-change: box-shadow, transform;
   font-size: 18px;
 }
+
+.main{
+  display: flex;
+  flex-direction: column;
+}
+
+.search{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
 .game-info {
   border: solid blue 2px;
   margin: 2px;
@@ -36,7 +46,11 @@
   margin-top: 15px;
   color: blue;
   margin-top: 25px;
-  width: 500px;
+}
+
+.gold-graph {
+  position: relative;
+  top: 70px;
 }
 
 .red{
@@ -129,11 +143,6 @@ a {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 50%
-}
-
-.gold-graph {
-  position: relative;
-  top: 70px;
 }
 
 .hidden {
