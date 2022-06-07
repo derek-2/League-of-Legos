@@ -1,5 +1,4 @@
 import Data from "./scripts/data"; // import Data class from data.js
-import RedTeamOnly from "./scripts/redTeamOnly";
 
 window.addEventListener('DOMContentLoaded', (event) => {
   function emptyChildren(parent) {
@@ -7,83 +6,44 @@ window.addEventListener('DOMContentLoaded', (event) => {
       parent.removeChild(parent.firstChild);
     }
   }
+
   function clearSearchFields(){
-    let team1Field = document.getElementById('team1');
-    let team2Field = document.getElementById('team2');
-    team1Field.value="";
-    team2Field.value="";
+    document.getElementById('team1').value='';
+    document.getElementById('team2').value='';
     showSpoilersBtn()
   }
-  function showSpoilersBtn(){
-    let spoilerBtn = document.getElementById('spoilers');
-    spoilerBtn.classList.remove('hidden');
-  }
-  let statsdiv = document.getElementById('stats');
 
-  const searchButton = document.getElementById('search-btn');
-  searchButton.addEventListener('click', () => {
-    // get input values
+  function showSpoilersBtn(){
+    document.getElementById('spoilers').classList.remove('hidden');
+  }
+  
+  function handleSearch(){
     let team1 = document.getElementById('team1').value.toUpperCase();
     let team2 = document.getElementById('team2').value.toUpperCase();
+    let statsdiv = document.getElementById('stats');
 
     if (!team1 && !team2){
       alert('enter valid teams!');
-    }
-    else if (team1){
+    } else {
       emptyChildren(statsdiv);
-      let request = new Data(team1, team2);
+      new Data(team1, team2);
       clearSearchFields();
     }
-    else {
-      emptyChildren(statsdiv)
-      let request = new RedTeamOnly(team2);
-      clearSearchFields();
-    }
+  }
+
+  const searchButton = document.getElementById('search-btn');
+  searchButton.addEventListener('click', () => {
+    handleSearch();
   });
 
   const firstTeam = document.getElementById('team1');
   const secondTeam = document.getElementById('team2');
-  firstTeam.addEventListener('keypress', function (e){
-    if (e.key === 'Enter'){
-      emptyChildren(statsdiv);
-      let team1 = document.getElementById('team1').value.toUpperCase();
-      let team2 = document.getElementById('team2').value.toUpperCase();
-      if (!team1 && !team2) {
-        alert('enter valid teams!');
-      }
-      else if (team1) {
-        emptyChildren(statsdiv);
-        let request = new Data(team1, team2);
-        clearSearchFields();
-      }
-      else {
-        emptyChildren(statsdiv)
-        let request = new RedTeamOnly(team2);
-        clearSearchFields();
-      }
-    }
-  });
-  secondTeam.addEventListener('keypress', function (e){
-    if (e.key === 'Enter'){
-      emptyChildren(statsdiv);
-      let team1 = document.getElementById('team1').value.toUpperCase();
-      let team2 = document.getElementById('team2').value.toUpperCase();
-      if (!team1 && !team2) {
-        alert('enter valid teams!');
-      }
-      else if (team1) {
-        emptyChildren(statsdiv);
-        let request = new Data(team1, team2);
-        clearSearchFields();
-      }
-      else {
-        emptyChildren(statsdiv)
-        let request = new RedTeamOnly(team2);
-        clearSearchFields();
-      }
-    }
-  });
-  //code here
+  [firstTeam, secondTeam].forEach(searchField => {
+    searchField.addEventListener('keypress', function (e){
+      if (e.key === 'Enter') handleSearch();
+    })
+  })
+
   let spoilerTag = document.getElementById('spoilers');
 
   spoilerTag.addEventListener('click', function(e){

@@ -25,8 +25,6 @@ class GoldShare {
     const margin = 40;
 
     const radius = Math.min(width, height) / 2 - margin
-    
-    // let blueGoldShare = document.createElement('div');
 
     const svg = d3.select(`#blueteam${i}`)
       .append("svg")
@@ -82,9 +80,6 @@ class GoldShare {
     const margin = 40;
 
     const radius = Math.min(width, height) / 2 - margin
-    /// -------------------------------------------------------------------------------
-
-    // let redGoldShare = document.createElement('div');
 
     const svg = d3.select(`#redteam${i}`)
       .append("svg")

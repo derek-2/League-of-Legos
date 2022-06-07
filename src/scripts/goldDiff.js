@@ -1,28 +1,5 @@
 class GoldDiff {
-  constructor(gameNum, team1, team2) {
-    this.gameNum = gameNum;
-    this.team1 = team1;
-    this.team2 = team2;
-    // this.generateGoldGraph(gameNum, team1, team2);
-  }
-
-  async generateGoldGraph(gameNum, team1, team2) {
-    let goldDiffy = [];
-
-    await d3.csv('./src/data/LeagueofLegends.csv', function (d) {
-      if ((d.blueTeamTag === team1 && !team2) || (d.blueTeamTag === team1 && d.redTeamTag === team2)) {
-
-        let goldDiff = JSON.parse(d.golddiff).map((ele, idx) => {
-          return {
-            minute: idx,
-            goldDiff: ele
-          };
-        });
-        goldDiffy.push(goldDiff);
-      }
-    });
-
-
+  async generateGoldGraph(gameNum, team1, team2, goldDiffy) {
 
     let goldGraph = document.createElementNS('http://www.w3.org/2000/svg','svg');
     goldGraph.setAttribute('id', `gold-graph-${gameNum}`);
@@ -54,8 +31,8 @@ class GoldDiff {
     const line = d3.line()
       .x(function (d) { return x(d.minute) })
       .y(function (d) { return y(d.goldDiff) })
-    x.domain(d3.extent(goldDiffy[gameNum], function (d) { return d.minute }));
-    y.domain(d3.extent(goldDiffy[gameNum], function (d) { return d.goldDiff }));
+    x.domain(d3.extent(goldDiffy, function (d) { return d.minute }));
+    y.domain(d3.extent(goldDiffy, function (d) { return d.goldDiff }));
 
     g.append("g")
       .attr("transform", "translate(0," + height + ")")
@@ -75,22 +52,14 @@ class GoldDiff {
       .text("Gold Difference");
 
     g.append("path")
-      .datum(goldDiffy[gameNum])
+      .datum(goldDiffy)
       .attr("fill", "none")
       .attr("stroke", "steelblue")
       .attr("stroke-linejoin", "round")
       .attr("stroke-linecap", "round")
       .attr("stroke-width", 1.5)
       .attr("d", line);
-
-
-    // ------------------------------------------------------
-
-
-
   }
-
-
 
 }
 export default GoldDiff;
