@@ -31,7 +31,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     const p2 = document.createElement('p');
     p2.innerHTML = 'Each player acrues gold throughout the game and League of Legos allows you to look at the individual stats for each player throughout each game.';
     const p3 = document.createElement('p');
-    p3.innerHTML = 'If you don\'t know any specific head to head matches, you can always search with just one team! If you do, you can pull up all matches played between two teams in their respective blue/red side.'
+    p3.innerHTML = 'If you don\'t know any specific head to head matches, you can always search with just one team! A classic match up is C9 vs TSM. Do note: C9 vs TSM pulls up different games from TSM vs C9 because games are played on their respective blue/red sides.'
     const img = document.createElement('img');
     img.setAttribute('src', './src/assets/da-rift.jpg');
     img.setAttribute('alt', 'summoner\'s rift');
