@@ -92,6 +92,7 @@ class Data {
     let statsdiv = document.getElementById('stats');
 
     for( let i = 0; i < playerNames.length; i++){
+      statsdiv.append(document.createElement('hr'));
       let gameInfo = document.createElement('div');
       gameInfo.setAttribute('id',`game-${i}`);
       gameInfo.setAttribute('class','game-info');
@@ -142,8 +143,8 @@ class Data {
         allRedsBans.push(bans[i][c]);
       }
 
-      bluesBans.innerHTML = `<b>Bans:</b> ${allBluesBans.join(", ")}`;
-      redsBans.innerHTML = `<b>Bans:</b> ${allRedsBans.join(", ")}`;
+      bluesBans.innerHTML = `Bans: ${allBluesBans.join(", ")}`;
+      redsBans.innerHTML = `Bans: ${allRedsBans.join(", ")}`;
 
       // time to generate all the graphs
       try {
@@ -178,18 +179,18 @@ class Data {
       newRow0.append(newRow00, newRow01, newRow02);
 
       let newRow1 = document.createElement('tr');
-      newRow1.innerHTML = '<tr><th><b>Role</b></th><th><b>Player</b></th><th><b>Champion</b></th><th><b>Gold</b></th><th><b>Gold</b></th><th><b>Champion</b></th><th><b>Player</b></th></tr>';
+      newRow1.innerHTML = '<tr><th>Role</th><th>Player</th><th>Champion</th><th>Gold</th><th>Gold</th><th>Champion</th><th>Player</th></tr>';
       newblueTable.append(newRow1);
 
       for (let j = 0; j < playerNames[i].length/2; j++) {
         let role;
         let color;
         switch (j % 5) {
-          case 0: role = 'Top'; color='#66c2a5'; break;
-          case 1: role = 'Jungle'; color='#fc8d62'; break;
-          case 2: role = 'Mid'; color='#8da0cb'; break;
-          case 3: role = 'ADC'; color='#e78ac3'; break;
-          case 4: role = 'Support'; color='#a6d854'; break;
+          case 0: role = 'Top'; color='#AC92EB'; break;
+          case 1: role = 'Jungle'; color='#4FC1E8'; break;
+          case 2: role = 'Mid'; color='#A0D568'; break;
+          case 3: role = 'ADC'; color='#FFCE54'; break;
+          case 4: role = 'Support'; color='#ED5564'; break;
         }
 
         let player = document.createElement('tr');
@@ -224,6 +225,7 @@ class Data {
       //toggle graphs
       let toggleBtn = document.createElement('button');
       toggleBtn.innerHTML = 'Switch Graphs'
+      toggleBtn.setAttribute('class', 'switch-graphs');
       gameInfo.append(toggleBtn);
       toggleBtn.addEventListener('click', () => {
         document.getElementById(`gold-graph-${i}`).classList.toggle('hidden');

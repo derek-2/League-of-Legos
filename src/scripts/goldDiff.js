@@ -10,7 +10,7 @@ class GoldDiff {
 
     // -------------------------------------------------------
 
-    const svgWidth = 900, svgHeight = 510;
+    const svgWidth = 900, svgHeight = 486;
     const margin = { top: 20, right: 20, bottom: 30, left: 50 };
     const width = svgWidth - margin.left - margin.right;
     const height = svgHeight - margin.top - margin.bottom;

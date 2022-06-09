@@ -135,27 +135,9 @@ table {
   border-spacing: 0;
 }
 
-#search-btn {
-  align-items: center;
-  background-color: #FCFCFD;
-  border-radius: 4px;
-  border-width: 0;
-  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-  box-sizing: border-box;
-  color: #36395A;
-  cursor: pointer;
-  display: inline-flex;
-  font-family: "JetBrains Mono", monospace;
-  height: 44px;
-  justify-content: center;
-  line-height: 1;
-  overflow: hidden;
-  padding-left: 16px;
-  padding-right: 16px;
-  position: relative;
-  text-align: left;
-  transition: box-shadow 0.15s, transform 0.15s;
-  font-size: 18px;
+footer > ul {
+  display: flex;
+  justify-content: space-around;
 }
 
 .main {
@@ -167,14 +149,20 @@ table {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  background-image: url("../../.././src/assets/background.jpg");
+  background-size: 100% 100%;
+  height: 50vh;
+  position: relative;
+  margin-top: 46px;
 }
 
 .game-info {
-  border: solid blue 2px;
-  margin: 2px;
   padding: 10px;
   display: flex;
   flex-direction: column;
+  position: relative;
+  min-width: 500px;
 }
 
 .gold-graphs {
@@ -184,57 +172,46 @@ table {
 }
 
 .players-container {
-  color: blue;
+  color: rgb(135, 135, 255);
 }
 
 .red {
-  color: red;
+  color: rgb(255, 122, 122);
 }
 
-h2 {
-  font-weight: bolder;
-  font-size: 40px;
-}
-
-main {
-  font-family: "Courier New", Courier, monospace;
-}
-
-body {
-  background-color: #c4f4ff;
+body * {
+  font-family: "Montserrat", sans-serif;
 }
 
 h1 {
-  font-size: 60px;
-  font-weight: bolder;
+  font-weight: 600;
+  font-size: 40px;
 }
 
 .playerinfotable {
   width: 100%;
+  background-color: black;
 }
 
-table, th, td {
-  border: 1px solid;
+th {
+  color: white;
+  border: 1px white solid;
+}
+
+td {
   padding: 3px;
-  font-weight: bolder;
+  border: 1px white solid;
 }
 
-.inside {
-  margin: 5px;
+tr {
+  border: 1px solid yellow;
+  font-weight: 500;
 }
 
-#league-img {
-  width: 100%;
-  height: 100%;
-}
-
-#github-img {
-  width: 30px;
+.footer-img {
   height: 30px;
-}
-
-.center {
-  display: absoulute;
+  width: auto;
+  color: white;
 }
 
 #team1, #team2 {
@@ -248,22 +225,17 @@ a {
   color: inherit;
 }
 
-#overall-record {
-  font-size: 40px;
-  font-weight: bolder;
+h2 {
+  font-size: 32px;
+  font-weight: 500;
 }
 
 .game-info > p:first-child {
   position: absolute;
   font-weight: bolder;
   font-size: 15px;
-}
-
-.center-search {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -100%);
+  top: 5px;
+  left: 5px;
 }
 
 .top-middle {
@@ -275,22 +247,16 @@ a {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
-#spoilers {
-  position: fixed;
-  right: 10px;
-  top: 10px;
-  border: solid black 1px;
-  padding: 5px;
-  background-color: white;
-  z-index: 100;
-  width: 70px;
+#league-img {
+  width: 100%;
+  height: 100%;
 }
 
-#spoilers:hover {
-  cursor: pointer;
+#logo {
+  height: 30px;
 }
 
 .winner {
@@ -304,6 +270,31 @@ ul {
   display: flex;
 }
 
+#top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  height: 30px;
+  width: 80vw;
+  top: 0;
+  z-index: 2;
+  background-color: #7a7aff;
+  color: white;
+  padding: 8px 10vw;
+}
+
+#logo ~ p {
+  font-weight: 400;
+  font-size: 25px;
+}
+
+#top-nav > div:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 ul > li {
   padding: 5px;
 }
@@ -313,5 +304,284 @@ ul > li {
 }
 
 .table-row:hover {
-  border: 2px solid yellow;
+  border: 2px solid !important;
+}
+
+#modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+
+#modal-container > #modal-background {
+  height: 100vh;
+}
+
+#modal-container > .modal-text {
+  transition: all 0.5s ease;
+}
+
+.modal-background {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(144, 144, 144);
+  opacity: 0.5;
+  position: absolute;
+}
+
+#me {
+  width: 100px;
+}
+
+.modal-text {
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: rgb(221, 221, 221);
+  position: relative;
+  width: 50vw;
+  border-radius: 15px;
+  color: black;
+  min-width: 350px;
+}
+
+.modal-text > * {
+  padding: 10px;
+}
+
+.initial {
+  margin: 10px;
+}
+
+#modal-container-initial {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.personal-link:hover {
+  transform: scale(1.1);
+  transition-duration: 1s;
+}
+
+.modal-text > h1:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #707efd;
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+  color: rgb(221, 221, 221);
+}
+
+#close-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 2em;
+  padding: 5px;
+}
+
+#close-modal:hover {
+  cursor: pointer;
+}
+
+.teams-list-container {
+  display: flex;
+}
+
+.non-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.non-text > * {
+  padding: 5px 0;
+}
+
+.non-text > h2 {
+  border-bottom: 1px solid black;
+}
+
+.non-text > div > div {
+  margin: 5px;
+}
+
+.non-text > p {
+  font-size: 30px;
+}
+
+.non-text > div {
+  display: flex;
+  align-items: center;
+}
+
+.teams-list {
+  display: flex;
+  flex-direction: column;
+  height: 20vh;
+  width: 20vw;
+  overflow-y: scroll;
+  color: black;
+}
+
+.teams-list > li {
+  padding: 5px;
+}
+
+.teams-list > li:hover {
+  cursor: pointer;
+}
+
+.most-games {
+  background-color: rgb(130, 255, 130);
+}
+
+.most-games:hover {
+  background-color: rgb(0, 255, 0);
+}
+
+.average-games {
+  background-color: rgb(255, 255, 150);
+}
+
+.average-games:hover {
+  background-color: rgb(255, 255, 0);
+}
+
+.below-average-games {
+  background-color: rgb(255, 200, 100);
+}
+
+.below-average-games:hover {
+  background-color: rgb(255, 166, 0);
+}
+
+.few-games {
+  background-color: rgb(255, 150, 150);
+}
+
+.few-games:hover {
+  background-color: rgb(255, 0, 0);
+}
+
+.teams-list::-webkit-scrollbar {
+  width: 16px;
+}
+
+.teams-list::-webkit-scrollbar-track {
+  background-color: #e4e4e4;
+  border-radius: 100px;
+}
+
+.teams-list::-webkit-scrollbar-thumb {
+  background-color: black;
+  border-radius: 100px;
+}
+
+#key > * {
+  display: flex;
+  align-items: center;
+  padding: 5px 0;
+}
+
+.color-box {
+  height: 20px;
+  width: 20px;
+}
+
+#green {
+  background-color: rgb(130, 255, 130);
+}
+
+#yellow {
+  background-color: rgb(255, 255, 150);
+}
+
+#orange {
+  background-color: rgb(255, 200, 100);
+}
+
+#sr {
+  width: 75%;
+}
+
+#help {
+  padding: 5px;
+  background-color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+#help:hover {
+  cursor: pointer;
+}
+
+#main {
+  padding: 0 10vw;
+}
+
+#about-me {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.switch-graphs {
+  position: absolute;
+  right: 15px;
+  top: 36px;
+}
+
+@media (max-width: 1200px) {
+  .gold-graphs {
+    flex-wrap: wrap;
+  }
+}
+.not-top {
+  background-color: rgb(221, 221, 221) !important;
+  color: black !important;
+}
+
+b {
+  font-weight: bolder;
+}
+
+#clipboard-message {
+  position: fixed;
+  top: 70px;
+  z-index: 3;
+  padding: 10px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  transition-duration: 0.5s;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+.visible {
+  visibility: visible !important;
+  opacity: 1 !important;
 }

@@ -34,7 +34,7 @@ class GoldShare {
       .attr("transform", `translate(${width / 2}, ${height / 2})`);
 
     const color = d3.scaleOrdinal()
-      .range(d3.schemeSet2);
+      .range(['#AC92EB' ,'#4FC1E8' , '#A0D568', '#FFCE54', '#ED5564']);
 
     const pie = d3.pie()
       .value(function (d) { return d[1] })
@@ -114,8 +114,8 @@ class GoldShare {
       .append("g")
       .attr("transform", `translate(${width / 2}, ${height / 2})`);
 
-    const color = d3.scaleOrdinal()
-      .range(d3.schemeSet2);
+      const color = d3.scaleOrdinal()
+      .range(['#AC92EB' ,'#4FC1E8' , '#A0D568', '#FFCE54', '#ED5564']);
 
     const pie = d3.pie()
       .value(function (d) { return d[1] })

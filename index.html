@@ -5,33 +5,90 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./dist/main.css" />
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <script src="./dist/main.js"></script>
-  <link rel="icon" href="./src/assets/leaguefavicon.jpg" type="image/x-icon">
   <title>League of Legos</title>
 </head>
 
 <body>
+  <nav id="top-nav">
+    <div><img id="logo" src="./src/assets/leaguefavicon.jpg" alt="league-of-legos"/> <p>eague of Legos</p></div>
+    <ul>
+      <li><a href="https://github.com/derek-2" class="icon brands fa-github"><span class="label"><img src="./src/assets/github.svg" alt="github" class="footer-img"></span></a></li>
+      <li><a href="https://www.linkedin.com/in/derek-lee-a43632152/"><span class="label"><img src="./src/assets/linkedin.svg" alt="github" class="footer-img"></span></a></li>
+      <li><a href="https://angel.co/u/derek-lee-35"><span class="label"><img src="./src/assets/angellist.svg" alt="github" class="footer-img"></span></a></li>
+      <li><img id='help' class="footer-img hidden" src='./src/assets/question-solid.svg' alt="question-mark"></li>
+    </ul>
+  </nav>
   <main id="main">
-    <div class="search">
-      <img id="league-img" src="./src/assets/background.jpg" alt="lol">
-      <div class="center-search">
-        <h1>League of Legos</h1>
-        <ul>
-          <li class="right"><a href="https://github.com/derek-2/NALeague"><img id="github-img" src="./src/assets/github.jpg" alt="github"></a></li>
-          <li>Second Link</li>
-          <li>Third Link</li>
-        </ul>
-        <h2 class="center" id="overall-record"></h2>
-        <label class="inside center"><input type="text" id="team1" placeholder="Blue Team"></label>
-        <label class="inside center"><input type="text" id="team2" placeholder="Red Team"></label>
-        <button class="center" id="search-btn">Search</button>
-      </div>
 
+    <div class="search">
+      <div class="center-search">
+        <h2 id="overall-record"></h2>
+        <input type="text" id="team1" placeholder="Blue Team">
+        <input type="text" id="team2" placeholder="Red Team">
+        <button id="search-btn">Search</button>
+      </div>
     </div>
-        <div class="hidden" id="spoilers">Reveal Winners</div>
-    <div id="stats"></div>
+
+    <div id="stats">
+      <div id="modal-container-initial">
+        <div class="modal-text initial">
+          <h1>How to use</h1>
+          <p>League of Legends is a 5v5 team game. League of Legos takes a look at all professional games played between the 2015 and 2018 seasons.</p>
+          <p>Each player acrues gold throughout the game and League of Legos allows you to look at the individual stats for each player throughout each game.</p>
+          <p>If you don't know any specific head to head matches, you can always search with just one team! If you do, for specific match ups to pull up all games played in their respective blue/red side.</p>
+          <div class="non-text">
+            <img id='sr'src="./src/assets/da-rift.jpg" alt="summoners-rift">
+            <h2>Recommendations</h2>
+            <div>
+              <div class="teams-list-container">
+                  <ul id='teams-list-initial' class="teams-list"></ul>
+              </div>
+              <div id="key">
+                <p><span class='color-box' id="green"> </span>&nbsp;> 300 Games</p>
+                <p><span class='color-box' id="yellow"></span>&nbsp;> 100 Games</p>
+                <p><span class='color-box' id="orange"></span>&nbsp;> 50 Games</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="clipboard-message">
+      <p>Copied to clipboard!</p>
+    </div>
+
+    <div id="modal-container" class="hidden">
+      <div id="modal-background" class="modal-background"></div>
+      <div class="modal-text">
+        <h1>How to use</h1>
+        <p>League of Legends is a 5v5 team game. League of Legos takes a look at all professional games played between the 2015 and 2018 seasons.</p>
+        <p>Each player acrues gold throughout the game and League of Legos allows you to look at the individual stats for each player throughout each game.</p>
+        <p>If you don't know any specific head to head matches, you can always search with just one team! If you do, for specific match ups to pull up all games played in their respective blue/red side.</p>
+        <span id="close-modal" class="hidden">&#10006;</span>
+        <div class="non-text">
+          <img id='sr'src="./src/assets/da-rift.jpg" alt="summoners-rift">
+          <h2>Recommendations</h2>
+          <div>
+            <div class="teams-list-container">
+              <ul id='teams-list' class="teams-list"></ul>
+            </div>
+            <div id="key">
+              <p><span class='color-box' id="green"> </span>&nbsp;> 300 Games</p>
+              <p><span class='color-box' id="yellow"></span>&nbsp;> 100 Games</p>
+              <p><span class='color-box' id="orange"></span>&nbsp;> 50 Games</p>
+              <p><span class='color-box' id="red"></span>&nbsp;<= 50 Games</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
   </main>
 </body>
 
