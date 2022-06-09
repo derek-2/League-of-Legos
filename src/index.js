@@ -9,7 +9,66 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }
 
   document.getElementById('logo-container').addEventListener('click', () => {
-    emptyChildren(statsdiv);
+    const stats = document.getElementById('stats');
+    emptyChildren(stats);
+    document.getElementById('help').classList.toggle('hidden');
+
+    const modalContainerInitial = document.createElement('div');
+    stats.append(modalContainerInitial);
+    modalContainerInitial.setAttribute('id', 'modal-container-initial');
+
+    const modalTextInitial = document.createElement('div');
+    modalTextInitial.setAttribute('class', 'modal-text initial');
+
+    const nonText = document.createElement('div');
+    nonText.setAttribute('class', 'non-text');
+    const h1 = document.createElement('h1');
+    h1.innerHTML = 'How to use';
+    const h2 = document.createElement('h2');
+    h2.innerHTML = 'Recommendations';
+    const p1 = document.createElement('p');
+    p1.innerHTML = 'League of Legends is a 5v5 team game. League of Legos takes a look at all professional games played between the 2015 and 2018 seasons.'
+    const p2 = document.createElement('p');
+    p2.innerHTML = 'Each player acrues gold throughout the game and League of Legos allows you to look at the individual stats for each player throughout each game.';
+    const p3 = document.createElement('p');
+    p3.innerHTML = 'If you don\'t know any specific head to head matches, you can always search with just one team! If you do, you can pull up all matches played between two teams in their respective blue/red side.'
+    const img = document.createElement('img');
+    img.setAttribute('src', './src/assets/da-rift.jpg');
+    img.setAttribute('alt', 'summoner\'s rift');
+    img.setAttribute('id', 'sr');
+    const div = document.createElement('div');
+    const key = document.createElement('key');
+    key.setAttribute('id', 'key');
+    const key1 = document.createElement('p');
+    key1.innerHTML = '<span class="color-box" id="green"> </span>&nbsp;> 300 Games';
+    const key2 = document.createElement('p');
+    key2.innerHTML = '<span class="color-box" id="yellow"></span>&nbsp;> 100 Games';
+    const key3 = document.createElement('p');
+    key3.innerHTML = '<span class="color-box" id="orange"></span>&nbsp;> 50 Games';
+    const teamsListContainer = document.createElement('div');
+    teamsListContainer.setAttribute('class', 'teams-list-container');
+    const ul = document.createElement('ul');
+    ul.setAttribute('id', 'teams-list-initial');
+    ul.setAttribute('class', 'teams-list');
+
+    stats.append(modalContainerInitial);
+    modalContainerInitial.append(modalTextInitial);
+    modalTextInitial.append(h1);
+    modalTextInitial.append(p1);
+    modalTextInitial.append(p2);
+    modalTextInitial.append(p3);
+    modalTextInitial.append(nonText);
+    nonText.append(img);
+    nonText.append(h2);
+    nonText.append(div);
+    div.append(teamsListContainer);
+    teamsListContainer.append(ul);
+
+    fetchTeams(document.getElementById('teams-list-initial'));
+    div.append(key);
+    key.append(key1);
+    key.append(key2);
+    key.append(key3);
   })
 
   const topnav = document.getElementById('top-nav');
@@ -65,7 +124,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     });
   })
   
-
+  function fetchTeams(parent1, parent2){
     let teams = {};
     d3.csv('../../../../src/data/LeagueofLegends.csv', function(d){
       if (typeof teams[d.blueTeamTag] === 'undefined'){
@@ -80,8 +139,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
         return a.toLowerCase().localeCompare(b.toLowerCase());
     });
       arr.forEach(team => {
-        let temp = document.createElement('li');
-        let temp2 = document.createElement('li');
+        let ele1 = document.createElement('li');
+
         let className;
         let gamesPlayed = teams[team];
         switch(true){
@@ -94,25 +153,43 @@ window.addEventListener('DOMContentLoaded', (event) => {
           default:
             className = 'few-games'; break;
         }
-        temp.setAttribute('class', className);
-        temp2.setAttribute('class', className);
-        temp.addEventListener('click', () => {
-          navigator.clipboard.writeText(temp.innerHTML);
+        ele1.setAttribute('class', className);
+
+
+        ele1.addEventListener('click', () => {
+          navigator.clipboard.writeText(ele1.innerHTML);
           document.getElementById('clipboard-message').classList.toggle('visible');
           setTimeout(() => {
             document.getElementById('clipboard-message').classList.toggle('visible');
           }, 5000)
         })
-        let word = document.createTextNode(team);
-        let word2 = document.createTextNode(team);
-        temp.appendChild(word);
-        temp2.appendChild(word2);
 
-        document.getElementById('teams-list-initial').append(temp)
-        document.getElementById('teams-list').append(temp2);
+        let text1 = document.createTextNode(team);
+
+        ele1.appendChild(text1);
+
+        parent1.append(ele1)
+
+        if (parent2){
+          let ele2 = document.createElement('li');
+          ele2.setAttribute('class', className);
+
+          ele2.addEventListener('click', () => {
+            navigator.clipboard.writeText(ele2.innerHTML);
+            document.getElementById('clipboard-message').classList.toggle('visible');
+            setTimeout(() => {
+              document.getElementById('clipboard-message').classList.toggle('visible');
+            }, 5000)
+          })
+          let text2 = document.createTextNode(team);
+          ele2.appendChild(text2);
+          parent2.append(ele2)
+        }
+
       })
     })
+  }
 
+  fetchTeams(document.getElementById('teams-list-initial'), document.getElementById('teams-list'));
 
-  
 });
