@@ -24,7 +24,7 @@ class Data {
     let goldDiffy = [];
     let matchInfo = [];
 
-    await d3.csv('../../../../src/data/LeagueofLegends.csv', function(d){
+    await d3.csv('../../../../../../src/data/LeagueofLegends.csv', function(d){
       if (((team1 && team2) && (team1 === d.blueTeamTag && team2 === d.redTeamTag)) || ((team1 && !team2) && (team1 === d.blueTeamTag)) || ((team2 && !team1) && team2 === d.redTeamTag)){
 
         team2tags.push(d.redTeamTag);
