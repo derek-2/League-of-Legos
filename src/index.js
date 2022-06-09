@@ -11,7 +11,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   document.getElementById('logo-container').addEventListener('click', () => {
     const stats = document.getElementById('stats');
     emptyChildren(stats);
-    document.getElementById('help').classList.toggle('hidden');
+    document.getElementById('help').classList.add('hidden');
 
     const modalContainerInitial = document.createElement('div');
     stats.append(modalContainerInitial);
