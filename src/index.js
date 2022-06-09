@@ -126,7 +126,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   
   function fetchTeams(parent1, parent2){
     let teams = {};
-    d3.csv('./League-of-Legos/src/data/LeagueofLegends.csv', function(d){
+    d3.csv('../League-of-Legos/src/data/LeagueofLegends.csv', function(d){
       if (typeof teams[d.blueTeamTag] === 'undefined'){
         teams[d.blueTeamTag.toUpperCase()] = 0;
       } else { teams[d.blueTeamTag.toUpperCase()] += 1}
