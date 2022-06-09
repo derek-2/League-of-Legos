@@ -1,11 +1,16 @@
 import Data from "./scripts/data"; // import Data class from data.js
 
 window.addEventListener('DOMContentLoaded', (event) => {
+  let statsdiv = document.getElementById('stats');
   function emptyChildren(parent) {
     while (parent.firstChild) {
       parent.removeChild(parent.firstChild);
     }
   }
+
+  document.getElementById('logo-container').addEventListener('click', () => {
+    emptyChildren(statsdiv);
+  })
 
   const topnav = document.getElementById('top-nav');
     function check() {
@@ -26,7 +31,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
   function handleSearch(){
     let team1 = document.getElementById('team1').value.toUpperCase();
     let team2 = document.getElementById('team2').value.toUpperCase();
-    let statsdiv = document.getElementById('stats');
     let helpBtn = document.getElementById('help');
 
     if (!team1 && !team2){

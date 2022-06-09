@@ -135,6 +135,42 @@ table {
   border-spacing: 0;
 }
 
+#logo-container {
+  cursor: pointer;
+}
+
+#search-btn {
+  background-color: white;
+  border: 1px solid black;
+  cursor: pointer;
+  height: 100%;
+}
+
+button {
+  background-color: white;
+  border: 1px solid black;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button:hover,
+#search-btn:hover {
+  background-color: #707EFD;
+  color: white;
+  border: 1px solid transparent;
+}
+
+input[type=text] {
+  border: 1px solid black;
+  padding: 0 5px;
+}
+
+input[type=text]:focus {
+  outline: none;
+}
+
 footer > ul {
   display: flex;
   justify-content: space-around;
@@ -155,6 +191,21 @@ footer > ul {
   height: 50vh;
   position: relative;
   margin-top: 46px;
+}
+
+.search-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search > div:first-child {
+  display: flex;
+}
+
+.search > div > * {
+  margin: 0 3px;
+  border-radius: 10px;
 }
 
 .game-info {
@@ -190,7 +241,9 @@ h1 {
 
 .playerinfotable {
   width: 100%;
-  background-color: black;
+  background-color: rgb(100, 100, 100);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 th {
@@ -234,7 +287,7 @@ h2 {
   position: absolute;
   font-weight: bolder;
   font-size: 15px;
-  top: 5px;
+  top: 0;
   left: 5px;
 }
 
@@ -261,9 +314,20 @@ h2 {
 
 .winner {
   position: absolute;
-  right: 15px;
-  width: 60px;
+  top: 0;
+  left: 45%;
+  width: 10%;
   line-height: 15px;
+}
+
+.switch-graphs {
+  position: absolute;
+  right: 15px;
+  top: 0;
+}
+
+.winner, .switch-graphs {
+  border-radius: 5px;
 }
 
 ul {
@@ -279,7 +343,7 @@ ul {
   width: 80vw;
   top: 0;
   z-index: 2;
-  background-color: #7a7aff;
+  background-color: #707EFD;
   color: white;
   padding: 8px 10vw;
 }
@@ -375,7 +439,7 @@ ul > li {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #707efd;
+  background-color: #707EFD;
   border-top-left-radius: inherit;
   border-top-right-radius: inherit;
   color: rgb(221, 221, 221);
@@ -470,25 +534,17 @@ ul > li {
   background-color: rgb(255, 166, 0);
 }
 
-.few-games {
-  background-color: rgb(255, 150, 150);
-}
-
-.few-games:hover {
-  background-color: rgb(255, 0, 0);
-}
-
 .teams-list::-webkit-scrollbar {
   width: 16px;
 }
 
 .teams-list::-webkit-scrollbar-track {
-  background-color: #e4e4e4;
+  background-color: rgba(0, 0, 0, 0.2);
   border-radius: 100px;
 }
 
 .teams-list::-webkit-scrollbar-thumb {
-  background-color: black;
+  background-color: #707EFD;
   border-radius: 100px;
 }
 
@@ -521,14 +577,18 @@ ul > li {
 
 #help {
   padding: 5px;
-  background-color: white;
   width: 20px;
   height: 20px;
   border-radius: 50%;
+  border: 1px solid transparent;
 }
 
 #help:hover {
+  background-color: white;
+  border: 1px solid black;
   cursor: pointer;
+  transform: scale(1.05);
+  transition-duration: 0.1s;
 }
 
 #main {
@@ -543,17 +603,6 @@ ul > li {
   justify-content: center;
 }
 
-.switch-graphs {
-  position: absolute;
-  right: 15px;
-  top: 36px;
-}
-
-@media (max-width: 1200px) {
-  .gold-graphs {
-    flex-wrap: wrap;
-  }
-}
 .not-top {
   background-color: rgb(221, 221, 221) !important;
   color: black !important;
@@ -584,4 +633,10 @@ b {
 .visible {
   visibility: visible !important;
   opacity: 1 !important;
+}
+
+@media (max-width: 1200px) {
+  .gold-graphs {
+    flex-wrap: wrap;
+  }
 }

@@ -16,7 +16,7 @@
 
 <body>
   <nav id="top-nav">
-    <div><img id="logo" src="./src/assets/leaguefavicon.jpg" alt="league-of-legos"/> <p>eague of Legos</p></div>
+    <div id="logo-container"><img id="logo" src="./src/assets/leaguefavicon.jpg" alt="league-of-legos"/> <p>eague of Legos</p></div>
     <ul>
       <li><a href="https://github.com/derek-2" class="icon brands fa-github"><span class="label"><img src="./src/assets/github.svg" alt="github" class="footer-img"></span></a></li>
       <li><a href="https://www.linkedin.com/in/derek-lee-a43632152/"><span class="label"><img src="./src/assets/linkedin.svg" alt="github" class="footer-img"></span></a></li>
@@ -24,16 +24,16 @@
       <li><img id='help' class="footer-img hidden" src='./src/assets/question-solid.svg' alt="question-mark"></li>
     </ul>
   </nav>
+  <div class="search">
+    <h2 id="overall-record"></h2>
+    <div class="search-2">
+      <input type="text" id="team1" placeholder="Blue Team">
+      <input type="text" id="team2" placeholder="Red Team">
+      <button id="search-btn">Search</button>
+    </div>
+  </div>
   <main id="main">
 
-    <div class="search">
-      <div class="center-search">
-        <h2 id="overall-record"></h2>
-        <input type="text" id="team1" placeholder="Blue Team">
-        <input type="text" id="team2" placeholder="Red Team">
-        <button id="search-btn">Search</button>
-      </div>
-    </div>
 
     <div id="stats">
       <div id="modal-container-initial">
@@ -41,7 +41,7 @@
           <h1>How to use</h1>
           <p>League of Legends is a 5v5 team game. League of Legos takes a look at all professional games played between the 2015 and 2018 seasons.</p>
           <p>Each player acrues gold throughout the game and League of Legos allows you to look at the individual stats for each player throughout each game.</p>
-          <p>If you don't know any specific head to head matches, you can always search with just one team! If you do, for specific match ups to pull up all games played in their respective blue/red side.</p>
+          <p>If you don't know any specific head to head matches, you can always search with just one team! If you do, you can pull up all matches played between two teams in their respective blue/red side.</p>
           <div class="non-text">
             <img id='sr'src="./src/assets/da-rift.jpg" alt="summoners-rift">
             <h2>Recommendations</h2>
@@ -50,9 +50,9 @@
                   <ul id='teams-list-initial' class="teams-list"></ul>
               </div>
               <div id="key">
-                <p><span class='color-box' id="green"> </span>&nbsp;> 300 Games</p>
-                <p><span class='color-box' id="yellow"></span>&nbsp;> 100 Games</p>
-                <p><span class='color-box' id="orange"></span>&nbsp;> 50 Games</p>
+                <p><span class="color-box" id="green"> </span>&nbsp;> 300 Games</p>
+                <p><span class="color-box" id="yellow"></span>&nbsp;> 100 Games</p>
+                <p><span class="color-box" id="orange"></span>&nbsp;> 50 Games</p>
               </div>
             </div>
           </div>
@@ -69,20 +69,20 @@
         <h1>How to use</h1>
         <p>League of Legends is a 5v5 team game. League of Legos takes a look at all professional games played between the 2015 and 2018 seasons.</p>
         <p>Each player acrues gold throughout the game and League of Legos allows you to look at the individual stats for each player throughout each game.</p>
-        <p>If you don't know any specific head to head matches, you can always search with just one team! If you do, for specific match ups to pull up all games played in their respective blue/red side.</p>
-        <span id="close-modal" class="hidden">&#10006;</span>
+        <p>If you don't know any specific head to head matches, you can always search with just one team! If you do, you can pull up all matches played between two teams in their respective blue/red side.</p>
+        <span id="close-modal">&#10006;</span>
         <div class="non-text">
-          <img id='sr'src="./src/assets/da-rift.jpg" alt="summoners-rift">
+          <img id="sr" src="./src/assets/da-rift.jpg" alt="summoners-rift">
           <h2>Recommendations</h2>
           <div>
             <div class="teams-list-container">
-              <ul id='teams-list' class="teams-list"></ul>
+              <ul id="teams-list" class="teams-list"></ul>
             </div>
             <div id="key">
-              <p><span class='color-box' id="green"> </span>&nbsp;> 300 Games</p>
-              <p><span class='color-box' id="yellow"></span>&nbsp;> 100 Games</p>
-              <p><span class='color-box' id="orange"></span>&nbsp;> 50 Games</p>
-              <p><span class='color-box' id="red"></span>&nbsp;<= 50 Games</p>
+              <p><span class="color-box" id="green"> </span>&nbsp;> 300 Games</p>
+              <p><span class="color-box" id="yellow"></span>&nbsp;> 100 Games</p>
+              <p><span class="color-box" id="orange"></span>&nbsp;> 50 Games</p>
+              <p><span class="color-box" id="red"></span>&nbsp;<= 50 Games</p>
             </div>
           </div>
         </div>

@@ -148,7 +148,6 @@ class Data {
 
       // time to generate all the graphs
       try {
-        // debugger
         let newGoldDiff = new GoldDiff(i, team1, team2, goldDiffy[i]);
         await newGoldDiff.generateGoldGraph(i, team1, team2, goldDiffy[i]);
         let newMatchInfo = new MatchInfo(i, team1, team2, matchInfo);
@@ -222,6 +221,10 @@ class Data {
         })
 
       }
+      const btnContainer = document.createElement('div');
+      btnContainer.setAttribute('class', 'btn-container');
+      gameInfo.append(btnContainer);
+
       //toggle graphs
       let toggleBtn = document.createElement('button');
       toggleBtn.innerHTML = 'Switch Graphs'
@@ -237,7 +240,7 @@ class Data {
       gameInfo.append(winner);
       winner.setAttribute('class','winner');
       winner.setAttribute('id',`winner${i}`)
-      winner.innerHTML = `Winner`;
+      winner.innerHTML = `Spoilers`;
       gameInfo.appendChild(winner);
       let oldText = null;
       winner.addEventListener('mouseenter', () => {
@@ -248,8 +251,6 @@ class Data {
         winner.innerHTML = oldText;
       })
 
-
-      
     }
     console.log(`data loaded in: ${(Date.now() - start)/1000}s`);
   } // end of async function
