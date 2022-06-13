@@ -23,6 +23,7 @@ League of Legends is a team-based 5 vs 5 game between the blue and red team. Eac
 
 - Generate general information about the league
     - Users will see all games played based on what they searched. Once the search has completed, each game will have a gold share chart for the blue and red team for that match and there will be a table showing the player name, character played, and gold amount by the end of the game. Hovering one row of the table or one slice of the gold share chart highlights that specific slice of the gold share chart. Clicking a highlighed slice of the gold share chart switches the content of pie chart to the player name. There are some more general information about the game such as the type of game played (spring season/summer season/world championship), team names, and what characters each team banned.
+    
 ![search](https://user-images.githubusercontent.com/59910096/173248233-4af1680d-8817-4935-ab22-5e837e0c48b9.gif)
 ```javascript
 svg

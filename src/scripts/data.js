@@ -8,8 +8,8 @@ class Data {
   }
 
   async generateData(team1, team2){
-    const start = Date.now();
-    console.log('Data is loading...');
+    // const start = Date.now();
+    // console.log('Data is loading...');
 
     let blueWins = 0;
     let redWins = 0;
@@ -39,8 +39,7 @@ class Data {
           winners.push(d.redTeamTag);
         }
 
-        // get player golds of both teams at the end of the game
-        let idx = JSON.parse(d.goldblueTop).length-1; // gets the idx for last minute of the game
+        let idx = JSON.parse(d.goldblueTop).length-1;
         let blueGold = [];
         let redGold = [];
 
@@ -252,7 +251,7 @@ class Data {
       })
 
     }
-    console.log(`data loaded in: ${(Date.now() - start)/1000}s`);
+    // console.log(`data loaded in: ${(Date.now() - start)/1000}s`);
   } // end of async function
 } // ending curly brace for class
 

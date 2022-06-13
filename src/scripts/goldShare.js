@@ -44,49 +44,7 @@ class GoldShare {
       .innerRadius(0)
       .outerRadius(radius)
 
-    svg
-      .selectAll('mySlices')
-      .data(data_ready)
-      .join('path')
-      .attr('d', arcGenerator)
-      .attr('fill', function (d) { return (color(d.data[0])) })
-      .attr("id", function(d) {return `${d.data[0]}-${i}`})
-      .attr("class", () => 'pie-chart')
-      .attr("stroke", "black")
-      .style("stroke-width", "2px")
-      .style("opacity", 0.7)
-
-      //player gold share percentage text
-    svg
-      .selectAll('mySlices')
-      .data(data_ready)
-      .join('text')
-      .text(function (d) { return `${Math.round(d.data[1]/blueTotal*100)}%`})
-      .attr("id", function(d) {return `${d.data[0]}-${i}-percentage`})
-      .attr("class", () => 'pie-chart')
-      .attr("transform", function (d) { 
-        let pos = arcGenerator.centroid(d);
-        pos[0]*=1.3;
-        pos[1]*=1.3;
-        return `translate(${pos})` })
-      .style("text-anchor", "middle")
-      .style("font-size", 17)
-
-      //player name text
-    svg
-      .selectAll('mySlices')
-      .data(data_ready)
-      .join('text')
-      .text(function (d) {return `${d.data[0]}`})
-      .attr("id", function(d) {return `${d.data[0]}-${i}-nametag`})
-      .attr("transform", function (d) { 
-        let pos = arcGenerator.centroid(d);
-        pos[0]*=1.3;
-        pos[1]*=1.3;
-        return `translate(${pos})` })
-      .attr("class", () => 'pie-chart hidden')
-      .style("text-anchor", "middle")
-      .style("font-size", 17)
+    
 
   }
 
