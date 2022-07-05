@@ -1,4 +1,4 @@
-# League of Legos
+# [League of Legos](https://derek-2.github.io/League-of-Legos/)
 ## Background
 
 League of Legends is a team-based 5 vs 5 game between the blue and red team. Each team can ban three characters, but in the later years, that number has increased to five. League of Legos shows data on all professional games played between the 2015 to 2018 seasons. 
